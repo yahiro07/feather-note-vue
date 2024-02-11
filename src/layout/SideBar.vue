@@ -38,9 +38,9 @@ const { avatarUrl } = exampleUserInfo
     > a {
       font-size: 32px;
       color: var(--cl-white);
-      transition: all 0.6s;
+      transition: var(--transition-common);
       &:hover {
-        opacity: 0.7;
+        opacity: var(--hover-opacity-common);
       }
     }
   }
