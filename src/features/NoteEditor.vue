@@ -10,7 +10,7 @@ const user = exampleUserInfo
 
 function addComment(contentText: string) {
   note.value.speeches.push({
-    id: generateIdTimeSequential(),
+    speechId: generateIdTimeSequential(),
     contentText: contentText
   })
 }
@@ -19,7 +19,7 @@ function addComment(contentText: string) {
 <template>
   <div class="fc-note-editor">
     <div class="blocks">
-      <SpeechCard v-for="item of note.speeches" :key="item.id" :speech="item" :user="user" />
+      <SpeechCard v-for="item of note.speeches" :key="item.speechId" :speech="item" :user="user" />
     </div>
     <SpeechEditForm :user="user" @submit="addComment" />
   </div>

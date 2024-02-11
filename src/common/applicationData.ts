@@ -1,9 +1,10 @@
 export type Speech = {
-  id: string
+  speechId: string
   contentText: string
 }
 
 export type Note = {
+  noteId: string
   speeches: Speech[]
 }
 
@@ -20,13 +21,14 @@ export const exampleUserInfo: UserInfo = {
 }
 
 export const exampleNote1: Note = {
+  noteId: '0001',
   speeches: [
     {
-      id: '0001',
+      speechId: '0001',
       contentText: 'hello'
     },
     {
-      id: '0002',
+      speechId: '0002',
       contentText: 'world'
     }
   ]
