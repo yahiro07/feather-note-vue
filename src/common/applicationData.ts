@@ -20,16 +20,19 @@ export const exampleUserInfo: UserInfo = {
   avatarUrl: 'https://i.imgur.com/T0tRUip.png'
 }
 
-export const exampleNote1: Note = {
-  noteId: '0001',
-  speeches: [
-    {
-      speechId: '0001',
-      contentText: 'hello'
-    },
-    {
-      speechId: '0002',
-      contentText: 'world'
-    }
-  ]
-}
+export const exampleNotes: Note[] = [
+  {
+    noteId: '00010',
+    speeches: [
+      { speechId: '00011', contentText: 'hello' },
+      { speechId: '00012', contentText: 'world' }
+    ]
+  },
+  {
+    noteId: '00020',
+    speeches: [
+      { speechId: '00021', contentText: 'aaa' },
+      { speechId: '00022', contentText: 'bbb' }
+    ]
+  }
+]

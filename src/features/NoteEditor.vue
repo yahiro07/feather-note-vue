@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { exampleNote1, exampleUserInfo } from '@/common/applicationData'
+import { exampleNotes, exampleUserInfo } from '@/common/applicationData'
 import SpeechCard from '@/components/organisms/SpeechCard.vue'
 import SpeechEditForm from '@/components/organisms/SpeechEditForm.vue'
 import { generateIdTimeSequential } from '@/utils/idGenerator'
 import { ref } from 'vue'
 
-const note = ref(exampleNote1)
+const note = ref(exampleNotes[0])
 const user = exampleUserInfo
 
 function addComment(contentText: string) {
