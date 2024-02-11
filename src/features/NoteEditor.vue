@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { exampleNote1, exampleUserInfo } from '@/common/applicationData'
-import BlockUserInfoPart from '@/components/BlockUserInfoPart.vue'
-import ButtonPrimary from '@/components/ButtonPrimary.vue'
-import BlockCard from '@/features/BlockCard.vue'
+import ButtonPrimary from '@/components/atoms/ButtonPrimary.vue'
+import BlockUserInfoPart from '@/components/molecules/BlockUserInfoPart.vue'
+import BlockCard from '@/components/organisms/BlockCard.vue'
 import { ref } from 'vue'
 
 const note = ref(exampleNote1)

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Block, UserInfo } from '@/common/applicationData'
-import BlockUserInfoPart from '@/components/BlockUserInfoPart.vue'
+import BlockUserInfoPart from '@/components/molecules/BlockUserInfoPart.vue'
 defineProps<{ block: Block; user: UserInfo }>()
 </script>
 

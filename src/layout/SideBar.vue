@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { exampleUserInfo } from '@/common/applicationData'
-import AvatarIcon from '@/components/AvatarIcon.vue'
+import AvatarIcon from '@/components/atoms/AvatarIcon.vue'
 import { Icon } from '@iconify/vue'
 import { RouterLink } from 'vue-router'
 
