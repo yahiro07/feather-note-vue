@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import CounterArea from '@/features/CounterArea.vue'
+import NoteEditor from '@/features/NoteEditor.vue'
 </script>
 
 <template>
   <main class="fc-home-view">
     <div class="column left-column">home view</div>
     <div class="column">
-      <CounterArea />
+      <NoteEditor />
     </div>
   </main>
 </template>
