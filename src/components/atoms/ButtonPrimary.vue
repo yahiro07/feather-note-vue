@@ -8,7 +8,6 @@ defineProps<{ iconSpec?: string; text?: string; disabled?: boolean }>()
   <button class="fc-button-primary" :disabled="disabled">
     <Icon :icon="iconSpec" v-if="iconSpec" class="icon" />
     <span v-if="text">{{ text }}</span>
-    {{ disabled }}
   </button>
 </template>
 
