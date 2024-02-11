@@ -5,10 +5,10 @@ defineProps<{ iconSpec?: string; text?: string }>()
 </script>
 
 <template>
-  <Button class="fc-button-primary">
+  <button class="fc-button-primary">
     <Icon :icon="iconSpec" v-if="iconSpec" class="icon" />
     <span v-if="text">{{ text }}</span>
-  </Button>
+  </button>
 </template>
 
 <style scoped lang="scss">
