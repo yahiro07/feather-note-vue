@@ -1,12 +1,31 @@
 <script setup lang="ts">
 import { exampleNote1, exampleUserInfo } from '@/common/applicationData'
+import { textCaps } from '@/common/constants'
 import ButtonPrimary from '@/components/atoms/ButtonPrimary.vue'
 import BlockUserInfoPart from '@/components/molecules/BlockUserInfoPart.vue'
 import BlockCard from '@/components/organisms/BlockCard.vue'
-import { ref } from 'vue'
+import { generateIdTimeSequential } from '@/utils/idGenerator'
+import { checkStringLength } from '@/utils/textHelper'
+import { computed, ref } from 'vue'
 
 const note = ref(exampleNote1)
 const user = exampleUserInfo
+
+const contentText = ref('')
+
+const canSubmit = computed(() => checkStringLength(contentText.value, 1, textCaps.blockContentText))
+
+const lengthsText = computed(() => `${contentText.value.length} / ${textCaps.blockContentText}`)
+
+function submitComment() {
+  if (canSubmit.value) {
+    note.value.blocks.push({
+      id: generateIdTimeSequential(),
+      contentText: contentText.value
+    })
+    contentText.value = ''
+  }
+}
 </script>
 
 <template>
@@ -16,11 +35,12 @@ const user = exampleUserInfo
     </div>
     <div class="edit-area">
       <div class="header-row">
-        <BlockUserInfoPart :user="user" />
-        <ButtonPrimary text="投稿" />
+        <BlockUserInfoPart :user="user" class="user-info-part" />
+        <span class="lengths"> {{ lengthsText }} </span>
+        <ButtonPrimary text="投稿" @click="submitComment" :disabled="!canSubmit" />
       </div>
       <div class="content-row">
-        <textarea placeholder="コメントを追加" />
+        <textarea placeholder="コメントを追加" v-model="contentText" />
       </div>
       <!-- ボタンを下に表示するパターン -->
       <div class="bottom-row" v-if="false">
@@ -50,7 +70,15 @@ const user = exampleUserInfo
     box-shadow: var(--spec-shadow-light);
     > .header-row {
       display: flex;
-      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+
+      > .user-info-part {
+        margin-right: auto;
+      }
+      > .lengths {
+        color: var(--cl-gray-2);
+      }
     }
 
     > .content-row {

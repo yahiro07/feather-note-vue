@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 
-defineProps<{ iconSpec?: string; text?: string }>()
+defineProps<{ iconSpec?: string; text?: string; disabled?: boolean }>()
 </script>
 
 <template>
-  <button class="fc-button-primary">
+  <button class="fc-button-primary" :disabled="disabled">
     <Icon :icon="iconSpec" v-if="iconSpec" class="icon" />
     <span v-if="text">{{ text }}</span>
+    {{ disabled }}
   </button>
 </template>
 
@@ -31,6 +32,10 @@ defineProps<{ iconSpec?: string; text?: string }>()
   transition: var(--transition-common);
   &:hover {
     opacity: var(--hover-opacity-common);
+  }
+
+  &:disabled {
+    opacity: var(--spec-opacity-control-disabled);
   }
 }
 </style>

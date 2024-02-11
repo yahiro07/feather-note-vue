@@ -19,7 +19,6 @@ import { RouterView } from 'vue-router'
   overflow: hidden;
   display: flex;
   background: var(--cl-site-background);
-  color: var(--cl-main-text);
 
   > .fc-side-bar {
     flex-shrink: 0;
