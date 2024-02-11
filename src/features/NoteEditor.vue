@@ -22,6 +22,10 @@ const user = exampleUserInfo
       <div class="content-row">
         <textarea placeholder="コメントを追加" />
       </div>
+      <!-- ボタンを下に表示するパターン -->
+      <div class="bottom-row" v-if="false">
+        <ButtonPrimary text="投稿" />
+      </div>
     </div>
   </div>
 </template>
@@ -64,6 +68,11 @@ const user = exampleUserInfo
         outline: none;
         border-bottom: solid 1px var(--cl-light-gray-2);
       }
+    }
+    > .bottom-row {
+      margin-top: 8px;
+      display: flex;
+      justify-content: flex-end;
     }
   }
 }
