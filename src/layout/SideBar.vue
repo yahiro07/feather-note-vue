@@ -1,10 +1,14 @@
 <script setup lang="ts">
+import { exampleUserInfo } from '@/common/applicationData'
+import AvatarIcon from '@/components/AvatarIcon.vue'
 import { Icon } from '@iconify/vue'
 import { RouterLink } from 'vue-router'
+
+const { avatarUrl } = exampleUserInfo
 </script>
 
 <template>
-  <header class="fc-side-bar">
+  <div class="fc-side-bar">
     <nav>
       <RouterLink to="/">
         <Icon icon="mdi:home" />
@@ -13,7 +17,8 @@ import { RouterLink } from 'vue-router'
         <Icon icon="mdi:info-outline" />
       </RouterLink>
     </nav>
-  </header>
+    <AvatarIcon :avatar-url="avatarUrl" :size="44" />
+  </div>
 </template>
 
 <style scoped lang="scss">
@@ -24,9 +29,9 @@ import { RouterLink } from 'vue-router'
   flex-direction: column;
   align-items: center;
   box-shadow: 0 0 6px #0008;
+  padding: 16px 0;
 
   > nav {
-    margin-top: 12px;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -38,6 +43,10 @@ import { RouterLink } from 'vue-router'
         opacity: 0.7;
       }
     }
+  }
+
+  > .fc-avatar-icon {
+    margin-top: auto;
   }
 }
 </style>
