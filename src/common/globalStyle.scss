@@ -19,6 +19,7 @@
   --transition-common: all 0.5s;
   --hover-opacity-common: 0.7;
   --spec-shadow-light: 0 0 4px #0004;
+  --weight-bold: 500;
 }
 
 h1,
@@ -28,4 +29,11 @@ h3,
 h5,
 h6 {
   font-weight: normal;
+}
+
+body,
+button,
+input,
+textarea {
+  font-family: 'Noto Sans JP', sans-serif;
 }

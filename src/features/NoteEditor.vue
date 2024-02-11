@@ -59,7 +59,7 @@ const user = exampleUserInfo
         flex-grow: 1;
         resize: none;
         min-height: 100px;
-        padding: 8px;
+        padding: 8px 4px;
         border: none;
         outline: none;
         border-bottom: solid 1px var(--cl-light-gray-2);

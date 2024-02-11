@@ -17,7 +17,7 @@ defineProps<{ iconSpec?: string; text?: string }>()
   color: var(--cl-white);
   height: 32px;
   border: none;
-  font-weight: bold;
+  font-weight: var(--weight-bold);
   display: flex;
   justify-content: center;
   align-items: center;
