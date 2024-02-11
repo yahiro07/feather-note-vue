@@ -34,7 +34,11 @@ function submitComment() {
       <ButtonPrimary text="投稿" @click="submitComment" :disabled="!canSubmit" />
     </div>
     <div class="content-row">
-      <textarea placeholder="コメントを追加" v-model="contentText" />
+      <textarea
+        placeholder="コメントを追加"
+        :value="contentText"
+        @input="(e) => (contentText = (e.target as HTMLTextAreaElement)!.value)"
+      />
     </div>
     <!-- ボタンを下に表示するパターン -->
     <div class="bottom-row" v-if="false">
