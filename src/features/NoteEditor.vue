@@ -3,7 +3,7 @@ import { exampleNote1, exampleUserInfo } from '@/common/applicationData'
 import { textCaps } from '@/common/constants'
 import ButtonPrimary from '@/components/atoms/ButtonPrimary.vue'
 import BlockUserInfoPart from '@/components/molecules/BlockUserInfoPart.vue'
-import BlockCard from '@/components/organisms/BlockCard.vue'
+import SpeechCard from '@/components/organisms/SpeechCard.vue'
 import { generateIdTimeSequential } from '@/utils/idGenerator'
 import { checkStringLength } from '@/utils/textHelper'
 import { computed, ref } from 'vue'
@@ -19,7 +19,7 @@ const lengthsText = computed(() => `${contentText.value.length} / ${textCaps.blo
 
 function submitComment() {
   if (canSubmit.value) {
-    note.value.blocks.push({
+    note.value.speeches.push({
       id: generateIdTimeSequential(),
       contentText: contentText.value
     })
@@ -31,7 +31,7 @@ function submitComment() {
 <template>
   <div class="fc-note-editor">
     <div class="blocks">
-      <BlockCard v-for="item of note.blocks" :key="item.id" :block="item" :user="user" />
+      <SpeechCard v-for="item of note.speeches" :key="item.id" :speech="item" :user="user" />
     </div>
     <div class="edit-area">
       <div class="header-row">

@@ -1,10 +1,10 @@
-export type Block = {
+export type Speech = {
   id: string
   contentText: string
 }
 
 export type Note = {
-  blocks: Block[]
+  speeches: Speech[]
 }
 
 export type UserInfo = {
@@ -20,7 +20,7 @@ export const exampleUserInfo: UserInfo = {
 }
 
 export const exampleNote1: Note = {
-  blocks: [
+  speeches: [
     {
       id: '0001',
       contentText: 'hello'

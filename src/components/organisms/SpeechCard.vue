@@ -1,23 +1,23 @@
 <script setup lang="ts">
-import type { Block, UserInfo } from '@/common/applicationData'
+import type { Speech, UserInfo } from '@/common/applicationData'
 import BlockUserInfoPart from '@/components/molecules/BlockUserInfoPart.vue'
-defineProps<{ block: Block; user: UserInfo }>()
+defineProps<{ speech: Speech; user: UserInfo }>()
 </script>
 
 <template>
-  <div class="fc-block-card">
+  <div class="fc-speech-card">
     <div class="header-row">
       <BlockUserInfoPart :user="user" />
     </div>
     <div class="content-row">
-      {{ block.contentText }}
+      {{ speech.contentText }}
     </div>
     <div class="footer-row"></div>
   </div>
 </template>
 
 <style scoped lang="scss">
-.fc-block-card {
+.fc-speech-card {
   background: var(--cl-white);
   box-shadow: var(--spec-shadow-light);
   padding: 16px;
