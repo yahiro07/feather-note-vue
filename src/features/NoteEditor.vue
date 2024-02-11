@@ -95,6 +95,9 @@ function submitComment() {
         border: none;
         outline: none;
         border-bottom: solid 1px var(--cl-light-gray-2);
+        &::placeholder {
+          color: var(--cl-gray-1);
+        }
       }
     }
     > .bottom-row {
