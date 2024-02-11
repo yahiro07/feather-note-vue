@@ -1,0 +1,23 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --cl-site-background: #f0f0f0;
+  --cl-white: #fff;
+  --cl-side-bar: rgb(63, 188, 216);
+  --cl-main-text: #333;
+}
+
+h1,
+h2,
+h3,
+h3,
+h5,
+h6 {
+  font-weight: normal;
+}
