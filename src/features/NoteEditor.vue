@@ -19,7 +19,12 @@ function addComment(contentText: string) {
 <template>
   <div class="fc-note-editor">
     <div class="blocks">
-      <SpeechCard v-for="item of note.speeches" :key="item.speechId" :speech="item" :user="user" />
+      <SpeechCard
+        v-for="speech of note.speeches"
+        :key="speech.speechId"
+        :speech="speech"
+        :user="user"
+      />
     </div>
     <SpeechEditForm :user="user" @submit="addComment" />
   </div>

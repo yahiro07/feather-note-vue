@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import NoteEditor from '@/features/NoteEditor.vue'
+import NoteTimeline from '@/features/NoteTimeline.vue'
 </script>
 
 <template>
   <main class="fc-home-view">
-    <div class="column left-column">home view</div>
+    <div class="column left-column">
+      <NoteTimeline />
+    </div>
     <div class="column">
       <NoteEditor />
     </div>
