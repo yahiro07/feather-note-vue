@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { iconSpecs } from '@/common/constants'
 import AvatarIcon from '@/components/atoms/AvatarIcon.vue'
 import { useAppStore } from '@/store/appStore'
 import { Icon } from '@iconify/vue'
@@ -11,10 +12,13 @@ const store = useAppStore()
   <div class="fc-side-bar">
     <nav>
       <RouterLink to="/">
-        <Icon icon="mdi:home" />
+        <Icon :icon="iconSpecs.home" />
+      </RouterLink>
+      <RouterLink to="/settings">
+        <Icon :icon="iconSpecs.settings" />
       </RouterLink>
       <RouterLink to="/about" v-if="false">
-        <Icon icon="mdi:info-outline" />
+        <Icon :icon="iconSpecs.about" />
       </RouterLink>
     </nav>
     <div class="users">
