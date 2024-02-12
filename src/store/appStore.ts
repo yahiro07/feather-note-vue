@@ -1,23 +1,26 @@
 import { presetData } from '@/common/presetData'
 import { type Note, type Speech } from '@/common/types'
+import { usePersistStore } from '@/store/persistStore'
 import { itemBy } from '@/utils/generalUtils'
 import { generateIdTimeSequential } from '@/utils/idGenerator'
-import { useLocalStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 
 export const useAppStore = defineStore('appStore', () => {
-  const userNotes = useLocalStorage<Note[]>('stepnote_vue_user_notes', [])
-  const currentNoteId = ref<string | undefined>(userNotes.value[0]?.noteId)
-  const guestUser = presetData.presetUsers['guest']
+  const persistStore = usePersistStore()
+  const userInfo = persistStore.persistData.userInfo
+  const userNotes = persistStore.persistData.userNotes
 
-  const notes = computed(() => [...userNotes.value, ...presetData.systemNotes])
+  const currentNoteId = ref<string | undefined>(userNotes[0]?.noteId)
+
+  const allNotes = computed(() => [...userNotes, ...presetData.systemNotes])
 
   const currentNote = computed(() => {
     const noteId = currentNoteId.value
     if (noteId) {
       return (
-        notes.value.find(itemBy({ noteId })) ?? ({ noteId, speeches: [], user: guestUser } as Note)
+        allNotes.value.find(itemBy({ noteId })) ??
+        ({ noteId, speeches: [], user: userInfo } as Note)
       )
     }
     return undefined
@@ -40,16 +43,15 @@ export const useAppStore = defineStore('appStore', () => {
       }
       note.speeches.push(speech)
       if (firstSpeech) {
-        userNotes.value.unshift(note)
+        userNotes.unshift(note)
       }
     }
   }
 
   return {
     _currentNoteId: currentNoteId,
-    _userNotes: userNotes,
-    guestUser,
-    notes,
+    userInfo,
+    allNotes,
     currentNote,
     ...actions
   }

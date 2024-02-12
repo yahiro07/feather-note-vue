@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { textCaps } from '@/common/constants'
-import { type User } from '@/common/types'
+import { type UserInfo } from '@/common/types'
 import ButtonPrimary from '@/components/atoms/ButtonPrimary.vue'
 import SpeechUserInfoPart from '@/components/molecules/SpeechUserInfoPart.vue'
 import { checkStringLength } from '@/utils/textHelper'
 import { computed, ref } from 'vue'
 
-defineProps<{ user: User }>()
+defineProps<{ user: UserInfo }>()
 
 const emit = defineEmits<{
   (e: 'submit', contentText: string): void

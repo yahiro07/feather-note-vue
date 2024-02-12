@@ -5,7 +5,7 @@ export type Speech = {
   contentText: string
 }
 
-export type User = {
+export type UserInfo = {
   userId: PresetUserId
   userName: string
   avatarUrl: string
@@ -13,6 +13,10 @@ export type User = {
 
 export type Note = {
   noteId: string
-  user: User
+  user: UserInfo
   speeches: Speech[]
+}
+
+export type UserOptions = {
+  reverseThreadFlow: boolean
 }

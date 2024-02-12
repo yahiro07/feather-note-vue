@@ -1,13 +1,13 @@
-import type { Note, User } from '@/common/types'
+import type { Note, UserInfo } from '@/common/types'
 import guidanceNotes from './guidanceNotes.json'
 
-const systemUser: User = {
+const systemUser: UserInfo = {
   userId: 'system',
   userName: 'システム',
   avatarUrl: 'https://i.imgur.com/T0tRUip.png'
 }
 
-const guestUser: User = {
+const guestUser: UserInfo = {
   userId: 'guest',
   userName: 'ユーザー',
   avatarUrl: 'https://i.imgur.com/zOObGW1.png'

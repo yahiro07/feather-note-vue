@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { Note, User } from '@/common/types'
+import type { Note, UserInfo } from '@/common/types'
 import SpeechCountLabel from '@/components/atoms/SpeechCountLabel.vue'
 import SpeechCard from '@/components/organisms/SpeechCard.vue'
-defineProps<{ note: Note; user: User }>()
+defineProps<{ note: Note; user: UserInfo }>()
 </script>
 
 <template>
