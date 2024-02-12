@@ -13,7 +13,7 @@ const store = useAppStore()
       <RouterLink to="/">
         <Icon icon="mdi:home" />
       </RouterLink>
-      <RouterLink to="/about">
+      <RouterLink to="/about" v-if="false">
         <Icon icon="mdi:info-outline" />
       </RouterLink>
     </nav>
@@ -29,6 +29,7 @@ const store = useAppStore()
   background: var(--cl-side-bar);
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   box-shadow: 0 0 6px #0008;
   padding: 12px 0 16px;
@@ -46,9 +47,7 @@ const store = useAppStore()
       }
     }
   }
-
   > .users {
-    margin-top: auto;
     display: flex;
     flex-direction: column;
     gap: 12px;
