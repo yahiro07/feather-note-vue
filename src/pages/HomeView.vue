@@ -4,11 +4,8 @@ import PanelHeader from '@/components/atoms/PanelHeader.vue'
 import NoteEditor from '@/features/NoteEditor.vue'
 import NoteTimeline from '@/features/NoteTimeline.vue'
 import { useAppStore } from '@/store/appStore'
-import { computed } from 'vue'
 
 const store = useAppStore()
-
-const canCreateNote = computed(() => store.currentUser.userId === 'guest')
 </script>
 
 <template>
@@ -16,19 +13,14 @@ const canCreateNote = computed(() => store.currentUser.userId === 'guest')
     <div class="column left-column">
       <PanelHeader icon-spec="fluent:timeline-24-regular" header-text="ノート一覧">
         <template v-slot:ui-right-part>
-          <ButtonPrimary
-            icon-spec="bxs:edit"
-            text="作成"
-            @click="store.createNewNote"
-            v-if="canCreateNote"
-          />
+          <ButtonPrimary icon-spec="bxs:edit" text="作成" @click="store.createNewNote" />
         </template>
       </PanelHeader>
       <NoteTimeline />
     </div>
     <div class="column">
       <PanelHeader icon-spec="ph:chat-text" header-text="ノート詳細" />
-      <NoteEditor v-if="store.currentNote" />
+      <NoteEditor :note="store.currentNote" v-if="store.currentNote" />
     </div>
   </main>
 </template>

@@ -1,15 +1,10 @@
 <script setup lang="ts">
-import type { PresetUserId } from '@/common/applicationData'
 import AvatarIcon from '@/components/atoms/AvatarIcon.vue'
 import { useAppStore } from '@/store/appStore'
 import { Icon } from '@iconify/vue'
 import { RouterLink } from 'vue-router'
 
 const store = useAppStore()
-
-function handleAvatarClick(id: PresetUserId) {
-  store.selectUser(id)
-}
 </script>
 
 <template>
@@ -23,13 +18,7 @@ function handleAvatarClick(id: PresetUserId) {
       </RouterLink>
     </nav>
     <div class="users">
-      <AvatarIcon
-        v-for="user of store.allUsers"
-        :key="user.userId"
-        :avatar-url="user.avatarUrl"
-        :size="44"
-        @click="handleAvatarClick(user.userId)"
-      />
+      <AvatarIcon :avatar-url="store.currentUser.avatarUrl" :size="44" />
     </div>
   </div>
 </template>

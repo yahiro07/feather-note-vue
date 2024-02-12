@@ -3,19 +3,18 @@ import SpeechCard from '@/components/organisms/SpeechCard.vue'
 import SpeechEditForm from '@/components/organisms/SpeechEditForm.vue'
 import { generateIdTimeSequential } from '@/utils/idGenerator'
 
+import type { Note } from '@/common/applicationData'
 import { useAppStore } from '@/store/appStore'
 import { computed } from 'vue'
 
 const store = useAppStore()
-
-const displaySpeeches = computed(
-  () => store.currentNote && store.currentNote?.speeches.length > 0 && store.currentNote.speeches
-)
-
-const canComment = computed(() => store.currentNote?.userId === 'guest')
+const props = defineProps<{ note: Note }>()
+const canComment = computed(() => props.note.userId === 'guest')
 
 function addComment(contentText: string) {
-  store.currentNote?.speeches.push({
+  //TODO: ストア側で発言をノートに追加する
+  // eslint-disable-next-line vue/no-mutating-props
+  props.note.speeches.push({
     speechId: generateIdTimeSequential(),
     contentText: contentText
   })
@@ -24,12 +23,12 @@ function addComment(contentText: string) {
 
 <template>
   <div class="fc-note-editor">
-    <div class="speeches" v-if="displaySpeeches">
+    <div class="speeches" v-if="note.speeches.length > 0">
       <SpeechCard
-        v-for="speech of displaySpeeches"
+        v-for="speech of note.speeches"
         :key="speech.speechId"
         :speech="speech"
-        :user="store.currentUser"
+        :user="store.getUser(note.userId)"
       />
     </div>
     <SpeechEditForm :user="store.currentUser" @submit="addComment" v-if="canComment" />

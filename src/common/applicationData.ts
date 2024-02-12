@@ -25,7 +25,7 @@ const systemUserInfo: UserInfo = {
 
 const guestUserInfo: UserInfo = {
   userId: 'guest',
-  userName: 'ユーザー1',
+  userName: 'ユーザー',
   avatarUrl: 'https://i.imgur.com/zOObGW1.png'
 }
 
@@ -34,7 +34,7 @@ const presetUserInfos = {
   guest: guestUserInfo
 }
 
-const systemUserNotes: Note[] = [
+const appIntroductionNotes: Note[] = [
   {
     noteId: '00020',
     userId: 'system',
@@ -59,9 +59,9 @@ const fallbackNote: Note = {
   speeches: []
 }
 
-export const presetDataProvider = {
+export const presetData = {
   allUsers: [systemUserInfo, guestUserInfo],
-  systemUserNotes,
+  appIntroductionNotes,
   presetUserInfos,
   fallbackNote
 }
