@@ -15,9 +15,10 @@ defineProps<{ count: number }>()
   display: flex;
   align-items: center;
   font-size: 1.5rem;
+  gap: 2px;
   > .icon {
-    font-size: 1.3em;
-    margin-top: 2px;
+    font-size: 1.1em;
+    margin-top: 4px;
   }
 }
 </style>
