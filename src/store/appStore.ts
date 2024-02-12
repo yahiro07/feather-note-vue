@@ -19,7 +19,9 @@ export const useAppStore = defineStore('appStore', () => {
   const currentNote = computed(() => {
     const noteId = currentNoteId.value
     if (noteId) {
-      return notes.value.find(itemBy({ noteId })) ?? { noteId, speeches: [] }
+      return (
+        notes.value.find(itemBy({ noteId })) ?? ({ noteId, speeches: [], userId: 'guest' } as Note)
+      )
     }
     return undefined
   })

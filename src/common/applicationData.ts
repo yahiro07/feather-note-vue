@@ -1,3 +1,5 @@
+export type PresetUserId = 'system' | 'guest'
+
 export type Speech = {
   speechId: string
   contentText: string
@@ -5,10 +7,9 @@ export type Speech = {
 
 export type Note = {
   noteId: string
+  userId: PresetUserId
   speeches: Speech[]
 }
-
-export type PresetUserId = 'system' | 'guest'
 
 export type UserInfo = {
   userId: PresetUserId
@@ -36,6 +37,7 @@ const presetUserInfos = {
 const systemUserNotes: Note[] = [
   {
     noteId: '00020',
+    userId: 'system',
     speeches: [
       { speechId: '00021', contentText: 'aaa' },
       { speechId: '00022', contentText: 'bbb' }
@@ -43,6 +45,7 @@ const systemUserNotes: Note[] = [
   },
   {
     noteId: '00010',
+    userId: 'system',
     speeches: [
       { speechId: '00011', contentText: 'hello' },
       { speechId: '00012', contentText: 'world' }
@@ -52,6 +55,7 @@ const systemUserNotes: Note[] = [
 
 const fallbackNote: Note = {
   noteId: '',
+  userId: 'system',
   speeches: []
 }
 
