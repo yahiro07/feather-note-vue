@@ -1,5 +1,5 @@
 import { presetData } from '@/common/presetData'
-import { type Note, type PresetUserId } from '@/common/types'
+import { type Note } from '@/common/types'
 import { itemBy } from '@/utils/generalUtils'
 import { generateIdTimeSequential } from '@/utils/idGenerator'
 import { defineStore } from 'pinia'
@@ -8,7 +8,7 @@ import { computed, ref } from 'vue'
 export const useAppStore = defineStore('appStore', () => {
   const currentNoteId = ref<string | undefined>(undefined)
   const guestUserNotes = ref<Note[]>([])
-  const currentUser = presetData.presetUserInfos['guest']
+  const currentUser = presetData.presetUsers['guest']
 
   const notes = computed(() => [...guestUserNotes.value, ...presetData.appIntroductionNotes])
 
@@ -16,17 +16,12 @@ export const useAppStore = defineStore('appStore', () => {
     const noteId = currentNoteId.value
     if (noteId) {
       return (
-        notes.value.find(itemBy({ noteId })) ?? ({ noteId, speeches: [], userId: 'guest' } as Note)
+        notes.value.find(itemBy({ noteId })) ??
+        ({ noteId, speeches: [], user: currentUser } as Note)
       )
     }
     return undefined
   })
-
-  const readers = {
-    getUser(userId: PresetUserId) {
-      return presetData.presetUserInfos[userId]
-    }
-  }
 
   const actions = {
     selectNote(noteId: string) {
@@ -43,7 +38,6 @@ export const useAppStore = defineStore('appStore', () => {
     currentUser,
     notes,
     currentNote,
-    ...readers,
     ...actions
   }
 })

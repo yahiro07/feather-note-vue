@@ -5,14 +5,14 @@ export type Speech = {
   contentText: string
 }
 
-export type Note = {
-  noteId: string
-  userId: PresetUserId
-  speeches: Speech[]
-}
-
-export type UserInfo = {
+export type User = {
   userId: PresetUserId
   userName: string
   avatarUrl: string
+}
+
+export type Note = {
+  noteId: string
+  user: User
+  speeches: Speech[]
 }

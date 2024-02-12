@@ -11,7 +11,7 @@ const store = useAppStore()
       v-for="note of store.notes"
       :key="note.noteId"
       :note="note"
-      :user="store.getUser(note.userId)"
+      :user="note.user"
       @click="store.selectNote(note.noteId)"
     />
   </div>

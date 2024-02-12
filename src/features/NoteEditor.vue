@@ -4,12 +4,10 @@ import SpeechEditForm from '@/components/organisms/SpeechEditForm.vue'
 import { generateIdTimeSequential } from '@/utils/idGenerator'
 
 import type { Note } from '@/common/types'
-import { useAppStore } from '@/store/appStore'
 import { computed } from 'vue'
 
-const store = useAppStore()
 const props = defineProps<{ note: Note }>()
-const canComment = computed(() => props.note.userId === 'guest')
+const canComment = computed(() => props.note.user.userId === 'guest')
 
 function addComment(contentText: string) {
   //TODO: ストア側で発言をノートに追加する
@@ -28,10 +26,10 @@ function addComment(contentText: string) {
         v-for="speech of note.speeches"
         :key="speech.speechId"
         :speech="speech"
-        :user="store.getUser(note.userId)"
+        :user="note.user"
       />
     </div>
-    <SpeechEditForm :user="store.currentUser" @submit="addComment" v-if="canComment" />
+    <SpeechEditForm :user="note.user" @submit="addComment" v-if="canComment" />
   </div>
 </template>
 
