@@ -42,7 +42,7 @@ function handleAvatarClick(id: PresetUserId) {
   flex-direction: column;
   align-items: center;
   box-shadow: 0 0 6px #0008;
-  padding: 16px 0;
+  padding: 12px 0 16px;
 
   > nav {
     display: flex;
