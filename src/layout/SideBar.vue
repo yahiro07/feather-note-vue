@@ -1,10 +1,15 @@
 <script setup lang="ts">
-import { exampleUserInfo } from '@/common/applicationData'
+import type { PresetUserId } from '@/common/applicationData'
 import AvatarIcon from '@/components/atoms/AvatarIcon.vue'
+import { useAppStore } from '@/store/appStore'
 import { Icon } from '@iconify/vue'
 import { RouterLink } from 'vue-router'
 
-const { avatarUrl } = exampleUserInfo
+const store = useAppStore()
+
+function handleAvatarClick(id: PresetUserId) {
+  store.selectUser(id)
+}
 </script>
 
 <template>
@@ -17,7 +22,15 @@ const { avatarUrl } = exampleUserInfo
         <Icon icon="mdi:info-outline" />
       </RouterLink>
     </nav>
-    <AvatarIcon :avatar-url="avatarUrl" :size="44" />
+    <div class="users">
+      <AvatarIcon
+        v-for="user of store.allUsers"
+        :key="user.userId"
+        :avatar-url="user.avatarUrl"
+        :size="44"
+        @click="handleAvatarClick(user.userId)"
+      />
+    </div>
   </div>
 </template>
 
@@ -45,8 +58,11 @@ const { avatarUrl } = exampleUserInfo
     }
   }
 
-  > .fc-avatar-icon {
+  > .users {
     margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
 }
 </style>

@@ -1,14 +1,18 @@
 <script setup lang="ts">
-import { exampleNotes, exampleUserInfo } from '@/common/applicationData'
 import TimelineNoteCard from '@/components/organisms/TimelineNoteCard.vue'
+import { useAppStore } from '@/store/appStore'
 
-const notes = exampleNotes
-const user = exampleUserInfo
+const store = useAppStore()
 </script>
 
 <template>
   <div class="fc-note-timeline">
-    <TimelineNoteCard v-for="note of notes" :key="note.noteId" :note="note" :user="user" />
+    <TimelineNoteCard
+      v-for="note of store.notes"
+      :key="note.noteId"
+      :note="note"
+      :user="store.currentUser"
+    />
   </div>
 </template>
 

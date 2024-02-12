@@ -1,15 +1,14 @@
 <script setup lang="ts">
-import { exampleNotes, exampleUserInfo } from '@/common/applicationData'
 import SpeechCard from '@/components/organisms/SpeechCard.vue'
 import SpeechEditForm from '@/components/organisms/SpeechEditForm.vue'
 import { generateIdTimeSequential } from '@/utils/idGenerator'
-import { ref } from 'vue'
 
-const note = ref(exampleNotes[0])
-const user = exampleUserInfo
+import { useAppStore } from '@/store/appStore'
+
+const store = useAppStore()
 
 function addComment(contentText: string) {
-  note.value.speeches.push({
+  store.currentNote.speeches.push({
     speechId: generateIdTimeSequential(),
     contentText: contentText
   })
@@ -20,13 +19,13 @@ function addComment(contentText: string) {
   <div class="fc-note-editor">
     <div class="blocks">
       <SpeechCard
-        v-for="speech of note.speeches"
+        v-for="speech of store.currentNote.speeches"
         :key="speech.speechId"
         :speech="speech"
-        :user="user"
+        :user="store.currentUser"
       />
     </div>
-    <SpeechEditForm :user="user" @submit="addComment" />
+    <SpeechEditForm :user="store.currentUser" @submit="addComment" />
   </div>
 </template>
 

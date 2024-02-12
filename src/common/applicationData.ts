@@ -8,19 +8,32 @@ export type Note = {
   speeches: Speech[]
 }
 
+export type PresetUserId = 'system' | 'guest'
+
 export type UserInfo = {
-  userId: string
+  userId: PresetUserId
   userName: string
   avatarUrl: string
 }
 
-export const exampleUserInfo: UserInfo = {
-  userId: 'user1',
-  userName: 'ユーザー1',
+const systemUserInfo: UserInfo = {
+  userId: 'system',
+  userName: 'システム',
   avatarUrl: 'https://i.imgur.com/T0tRUip.png'
 }
 
-export const exampleNotes: Note[] = [
+const guestUserInfo: UserInfo = {
+  userId: 'guest',
+  userName: 'ユーザー1',
+  avatarUrl: 'https://i.imgur.com/zOObGW1.png'
+}
+
+const presetUserInfos = {
+  system: systemUserInfo,
+  guest: guestUserInfo
+}
+
+const systemUserNotes: Note[] = [
   {
     noteId: '00020',
     speeches: [
@@ -36,3 +49,15 @@ export const exampleNotes: Note[] = [
     ]
   }
 ]
+
+const fallbackNote: Note = {
+  noteId: '',
+  speeches: []
+}
+
+export const presetDataProvider = {
+  allUsers: [systemUserInfo, guestUserInfo],
+  systemUserNotes,
+  presetUserInfos,
+  fallbackNote
+}
