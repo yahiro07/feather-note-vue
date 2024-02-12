@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import ButtonPrimary from '@/components/atoms/ButtonPrimary.vue'
 import PanelHeader from '@/components/atoms/PanelHeader.vue'
-import NoteEditor from '@/features/NoteEditor.vue'
-import NoteTimeline from '@/features/NoteTimeline.vue'
+import NoteEditor from '@/components/templates/NoteEditor.vue'
+import NoteTimeline from '@/components/templates/NoteTimeline.vue'
 import { useAppStore } from '@/store/appStore'
 
 const store = useAppStore()

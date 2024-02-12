@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import GithubLinkButton from '@/components/atoms/GithubLinkButton.vue'
-import SideBarVue from '@/layout/SideBar.vue'
+import SideBar from '@/components/templates/SideBar.vue'
 import { RouterView } from 'vue-router'
 </script>
 
 <template>
   <div class="fc-app">
-    <SideBarVue />
+    <SideBar />
     <div class="main-column">
       <RouterView />
     </div>
