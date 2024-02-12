@@ -12,7 +12,7 @@ defineProps<{ avatarUrl: string; size: number }>()
 .fc-avatar-icon {
   border-radius: 50%;
   overflow: hidden;
-  box-shadow: 0 0 1px #0008;
+  box-shadow: 0 0 1px #000;
 
   > img {
     width: 100%;
