@@ -1,28 +1,30 @@
-import { presetDataProvider, type PresetUserId } from '@/common/applicationData'
+import { presetDataProvider, type Note, type PresetUserId } from '@/common/applicationData'
 import { defineStore } from 'pinia'
+import { computed, ref } from 'vue'
 
-const preset = presetDataProvider
+const pd = presetDataProvider
 
-export const useAppStore = defineStore('appStore', {
-  state: () => {
-    return {
-      currentUserId: 'system' as PresetUserId,
-      notes: preset.systemUserNotes
+export const useAppStore = defineStore('appStore', () => {
+  const currentUserId = ref<PresetUserId>('system')
+  const notes = ref<Note[]>(pd.systemUserNotes)
+
+  const currentUser = computed(() => pd.presetUserInfos[currentUserId.value])
+  const currentNote = computed(() => notes.value[0] ?? presetDataProvider.fallbackNote)
+
+  const selectUser = (userId: PresetUserId) => {
+    currentUserId.value = userId
+    if (userId === 'system') {
+      notes.value = pd.systemUserNotes
+    } else {
+      notes.value = []
     }
-  },
-  getters: {
-    allUsers: () => preset.allUsers,
-    currentUser: (state) => preset.presetUserInfos[state.currentUserId],
-    currentNote: (state) => state.notes[0] ?? preset.fallbackNote
-  },
-  actions: {
-    selectUser(userId: PresetUserId) {
-      this.currentUserId = userId
-      if (userId === 'system') {
-        this.$state.notes = preset.systemUserNotes
-      } else {
-        this.$state.notes = []
-      }
-    }
+  }
+
+  return {
+    allUsers: pd.allUsers,
+    currentUser,
+    notes,
+    currentNote,
+    selectUser
   }
 })
