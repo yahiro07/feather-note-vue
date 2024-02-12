@@ -2,7 +2,7 @@
 import { type UserInfo } from '@/common/applicationData'
 import { textCaps } from '@/common/constants'
 import ButtonPrimary from '@/components/atoms/ButtonPrimary.vue'
-import BlockUserInfoPart from '@/components/molecules/BlockUserInfoPart.vue'
+import SpeechUserInfoPart from '@/components/molecules/SpeechUserInfoPart.vue'
 import { checkStringLength } from '@/utils/textHelper'
 import { computed, ref } from 'vue'
 
@@ -29,7 +29,7 @@ function submitComment() {
 <template>
   <div class="fc-speech-edit-form">
     <div class="header-row">
-      <BlockUserInfoPart :user="user" class="user-info-part" />
+      <SpeechUserInfoPart :user="user" class="user-info-part" />
       <span class="lengths"> {{ lengthsText }} </span>
       <ButtonPrimary text="投稿" @click="submitComment" :disabled="!canSubmit" />
     </div>

@@ -6,7 +6,7 @@ defineProps<{ user: UserInfo }>()
 </script>
 
 <template>
-  <div class="fc-block-user-info-part">
+  <div class="fc-speech-user-info-part">
     <AvatarIcon :avatar-url="user.avatarUrl" :size="36" />
     <span>
       {{ user.userName }}
@@ -15,7 +15,7 @@ defineProps<{ user: UserInfo }>()
 </template>
 
 <style scoped lang="scss">
-.fc-block-user-info-part {
+.fc-speech-user-info-part {
   display: flex;
   gap: 8px;
   align-items: center;

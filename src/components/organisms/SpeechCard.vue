@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import type { Speech, UserInfo } from '@/common/applicationData'
-import BlockUserInfoPart from '@/components/molecules/BlockUserInfoPart.vue'
+import SpeechUserInfoPart from '@/components/molecules/SpeechUserInfoPart.vue'
 defineProps<{ speech: Speech; user: UserInfo }>()
 </script>
 
 <template>
   <div class="fc-speech-card">
     <div class="header-row">
-      <BlockUserInfoPart :user="user" />
+      <SpeechUserInfoPart :user="user" />
     </div>
     <div class="content-row">
       {{ speech.contentText }}
