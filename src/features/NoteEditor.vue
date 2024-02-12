@@ -8,7 +8,10 @@ import { computed } from 'vue'
 const props = defineProps<{ note: Note }>()
 const emit = defineEmits<{ createSpeech: [string] }>()
 
-const canComment = computed(() => props.note.user.userId === 'guest')
+const isUserNote = computed(() => props.note.user.userId === 'guest')
+
+const canComment = isUserNote
+const isReverseFlow = false
 
 function addComment(contentText: string) {
   emit('createSpeech', contentText)
@@ -16,7 +19,7 @@ function addComment(contentText: string) {
 </script>
 
 <template>
-  <div class="fc-note-editor">
+  <div :class="['fc-note-editor', isReverseFlow && '--flow-reverse']">
     <div class="speeches" v-if="note.speeches.length > 0">
       <SpeechCard
         v-for="speech of note.speeches"
@@ -39,6 +42,13 @@ function addComment(contentText: string) {
     display: flex;
     flex-direction: column;
     gap: 16px;
+  }
+
+  &.--flow-reverse {
+    flex-direction: column-reverse;
+    > .speeches {
+      flex-direction: column-reverse;
+    }
   }
 }
 </style>

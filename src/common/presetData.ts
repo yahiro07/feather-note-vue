@@ -1,4 +1,5 @@
 import type { Note, User } from '@/common/types'
+import guidanceNotes from './guidanceNotes.json'
 
 const systemUser: User = {
   userId: 'system',
@@ -17,24 +18,11 @@ const presetUsers = {
   guest: guestUser
 }
 
-const systemNotes: Note[] = [
-  {
-    noteId: '00020',
-    user: systemUser,
-    speeches: [
-      { speechId: '00021', contentText: 'aaa' },
-      { speechId: '00022', contentText: 'bbb' }
-    ]
-  },
-  {
-    noteId: '00010',
-    user: systemUser,
-    speeches: [
-      { speechId: '00011', contentText: 'hello' },
-      { speechId: '00012', contentText: 'world' }
-    ]
-  }
-]
+const systemNotes: Note[] = guidanceNotes.map((note) => ({
+  noteId: note.noteId,
+  user: systemUser,
+  speeches: note.speeches
+}))
 
 const fallbackNote: Note = {
   noteId: '',
