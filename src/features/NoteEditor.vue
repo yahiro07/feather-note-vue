@@ -16,8 +16,8 @@ function addComment(contentText: string) {
 </script>
 
 <template>
-  <div class="fc-note-editor" v-if="store.currentNote">
-    <div class="blocks">
+  <div class="fc-note-editor">
+    <div class="speeches" v-if="store.currentNote">
       <SpeechCard
         v-for="speech of store.currentNote.speeches"
         :key="speech.speechId"
@@ -35,7 +35,7 @@ function addComment(contentText: string) {
   flex-direction: column;
   gap: 16px;
 
-  > .blocks {
+  > .speeches {
     display: flex;
     flex-direction: column;
     gap: 16px;
