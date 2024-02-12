@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { exampleNotes, exampleUserInfo } from '@/common/applicationData'
-import SpeechCard from '@/components/organisms/SpeechCard.vue'
+import TimelineNoteCard from '@/components/organisms/TimelineNoteCard.vue'
 
 const notes = exampleNotes
 const user = exampleUserInfo
@@ -8,9 +8,7 @@ const user = exampleUserInfo
 
 <template>
   <div class="fc-note-timeline">
-    <template v-for="note of notes" :key="note.noteId">
-      <SpeechCard :speech="note.speeches[0]" :user="user" />
-    </template>
+    <TimelineNoteCard v-for="note of notes" :key="note.noteId" :note="note" :user="user" />
   </div>
 </template>
 

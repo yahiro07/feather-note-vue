@@ -13,6 +13,7 @@ defineProps<{ speech: Speech; user: UserInfo }>()
       {{ speech.contentText }}
     </div>
     <div class="footer-row"></div>
+    <slot name="overlay-content" />
   </div>
 </template>
 
@@ -25,5 +26,6 @@ defineProps<{ speech: Speech; user: UserInfo }>()
   display: flex;
   flex-direction: column;
   gap: 8px;
+  position: relative;
 }
 </style>
