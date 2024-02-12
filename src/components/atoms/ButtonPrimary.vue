@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 
-defineProps<{ iconSpec?: string; text?: string; disabled?: boolean }>()
+defineProps<{ iconSpec?: string; text?: string }>()
 </script>
 
 <template>
-  <button class="fc-button-primary" :disabled="disabled">
+  <button class="fc-button-primary">
     <Icon :icon="iconSpec" v-if="iconSpec" class="icon" />
     <span v-if="text">{{ text }}</span>
   </button>
@@ -26,7 +26,7 @@ defineProps<{ iconSpec?: string; text?: string; disabled?: boolean }>()
   gap: 1px;
   cursor: pointer;
   > .icon {
-    font-size: 1.2em;
+    font-size: 1.3em;
     margin-top: 3px;
   }
 
