@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { UserInfo } from '@/common/applicationData'
+import type { User } from '@/common/types'
 import AvatarIcon from '@/components/atoms/AvatarIcon.vue'
 
-defineProps<{ user: UserInfo }>()
+defineProps<{ user: User }>()
 </script>
 
 <template>

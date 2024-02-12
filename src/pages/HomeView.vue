@@ -16,7 +16,7 @@ const store = useAppStore()
           <ButtonPrimary icon-spec="bxs:edit" text="作成" @click="store.createNewNote" />
         </template>
       </PanelHeader>
-      <NoteTimeline />
+      <NoteTimeline :notes="store.notes" @select-note="store.selectNote" />
     </div>
     <div class="column">
       <PanelHeader icon-spec="ph:chat-text" header-text="ノート詳細" />
