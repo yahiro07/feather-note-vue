@@ -68,7 +68,7 @@ function submitComment() {
   }
 
   > .content-row {
-    margin-top: 4px;
+    margin-top: 8px;
     display: flex;
     align-items: flex-start;
     gap: 4px;
@@ -83,6 +83,10 @@ function submitComment() {
       border-bottom: solid 1px var(--cl-light-gray-2);
       &::placeholder {
         color: var(--cl-gray-1);
+      }
+      &:focus {
+        outline: solid 1px var(--cl-input-focus);
+        border-bottom: none;
       }
     }
   }
