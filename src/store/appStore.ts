@@ -2,12 +2,13 @@ import { presetData } from '@/common/presetData'
 import { type Note, type Speech } from '@/common/types'
 import { itemBy } from '@/utils/generalUtils'
 import { generateIdTimeSequential } from '@/utils/idGenerator'
+import { useLocalStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 
 export const useAppStore = defineStore('appStore', () => {
-  const userNotes = ref<Note[]>([])
-  const currentNoteId = ref<string | undefined>(undefined)
+  const userNotes = useLocalStorage<Note[]>('stepnote_vue_user_notes', [])
+  const currentNoteId = ref<string | undefined>(userNotes.value[0]?.noteId)
   const guestUser = presetData.presetUsers['guest']
 
   const notes = computed(() => [...userNotes.value, ...presetData.systemNotes])
