@@ -1,21 +1,17 @@
 <script setup lang="ts">
 import SpeechCard from '@/components/organisms/SpeechCard.vue'
 import SpeechEditForm from '@/components/organisms/SpeechEditForm.vue'
-import { generateIdTimeSequential } from '@/utils/idGenerator'
 
 import type { Note } from '@/common/types'
 import { computed } from 'vue'
 
 const props = defineProps<{ note: Note }>()
+const emit = defineEmits<{ createSpeech: [string] }>()
+
 const canComment = computed(() => props.note.user.userId === 'guest')
 
 function addComment(contentText: string) {
-  //TODO: ストア側で発言をノートに追加する
-  // eslint-disable-next-line vue/no-mutating-props
-  props.note.speeches.push({
-    speechId: generateIdTimeSequential(),
-    contentText: contentText
-  })
+  emit('createSpeech', contentText)
 }
 </script>
 

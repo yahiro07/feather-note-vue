@@ -17,7 +17,7 @@ const presetUsers = {
   guest: guestUser
 }
 
-const appIntroductionNotes: Note[] = [
+const systemNotes: Note[] = [
   {
     noteId: '00020',
     user: systemUser,
@@ -43,7 +43,7 @@ const fallbackNote: Note = {
 }
 
 export const presetData = {
-  appIntroductionNotes,
+  systemNotes,
   presetUsers,
   fallbackNote
 }

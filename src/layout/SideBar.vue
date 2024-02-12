@@ -18,7 +18,7 @@ const store = useAppStore()
       </RouterLink>
     </nav>
     <div class="users">
-      <AvatarIcon :avatar-url="store.currentUser.avatarUrl" :size="44" />
+      <AvatarIcon :avatar-url="store.guestUser.avatarUrl" :size="44" />
     </div>
   </div>
 </template>
