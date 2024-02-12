@@ -8,7 +8,7 @@ defineProps<{ user: UserInfo }>()
 <template>
   <div class="fc-speech-user-info-part">
     <AvatarIcon :avatar-url="user.avatarUrl" :size="36" />
-    <span>
+    <span class="user-name">
       {{ user.userName }}
     </span>
   </div>
@@ -19,5 +19,9 @@ defineProps<{ user: UserInfo }>()
   display: flex;
   gap: 8px;
   align-items: center;
+
+  > .user-name {
+    font-weight: var(--weight-bold);
+  }
 }
 </style>
