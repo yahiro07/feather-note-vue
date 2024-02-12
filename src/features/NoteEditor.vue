@@ -8,7 +8,7 @@ import { useAppStore } from '@/store/appStore'
 const store = useAppStore()
 
 function addComment(contentText: string) {
-  store.currentNote.speeches.push({
+  store.currentNote?.speeches.push({
     speechId: generateIdTimeSequential(),
     contentText: contentText
   })
@@ -16,7 +16,7 @@ function addComment(contentText: string) {
 </script>
 
 <template>
-  <div class="fc-note-editor">
+  <div class="fc-note-editor" v-if="store.currentNote">
     <div class="blocks">
       <SpeechCard
         v-for="speech of store.currentNote.speeches"

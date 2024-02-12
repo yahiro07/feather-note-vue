@@ -1,18 +1,26 @@
 <script setup lang="ts">
+import ButtonPrimary from '@/components/atoms/ButtonPrimary.vue'
 import PanelHeader from '@/components/atoms/PanelHeader.vue'
 import NoteEditor from '@/features/NoteEditor.vue'
 import NoteTimeline from '@/features/NoteTimeline.vue'
+import { useAppStore } from '@/store/appStore'
+
+const store = useAppStore()
 </script>
 
 <template>
   <main class="fc-home-view">
     <div class="column left-column">
-      <PanelHeader icon-spec="fluent:timeline-24-regular" header-text="ノート一覧" />
+      <PanelHeader icon-spec="fluent:timeline-24-regular" header-text="ノート一覧">
+        <template v-slot:ui-right-part>
+          <ButtonPrimary icon-spec="bxs:edit" text="作成" @click="store.createNewNote" />
+        </template>
+      </PanelHeader>
       <NoteTimeline />
     </div>
     <div class="column">
       <PanelHeader icon-spec="ph:chat-text" header-text="ノート詳細" />
-      <NoteEditor />
+      <NoteEditor v-if="store.currentNote" />
     </div>
   </main>
 </template>

@@ -22,10 +22,12 @@ defineProps<{ iconSpec?: string; text?: string; disabled?: boolean }>()
   justify-content: center;
   align-items: center;
   padding: 0 12px;
-  font-size: 12px;
+  font-size: 1rem;
+  gap: 1px;
   cursor: pointer;
   > .icon {
     font-size: 1.2em;
+    margin-top: 3px;
   }
 
   transition: var(--transition-common);

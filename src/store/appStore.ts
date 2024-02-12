@@ -1,4 +1,6 @@
 import { presetDataProvider, type Note, type PresetUserId } from '@/common/applicationData'
+import { itemBy } from '@/utils/generalUtils'
+import { generateIdTimeSequential } from '@/utils/idGenerator'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 
@@ -6,17 +8,32 @@ const pd = presetDataProvider
 
 export const useAppStore = defineStore('appStore', () => {
   const currentUserId = ref<PresetUserId>('system')
-  const notes = ref<Note[]>(pd.systemUserNotes)
-
+  const currentNoteId = ref<string | undefined>(undefined)
+  const guestUserNotes = ref<Note[]>([])
   const currentUser = computed(() => pd.presetUserInfos[currentUserId.value])
-  const currentNote = computed(() => notes.value[0] ?? presetDataProvider.fallbackNote)
 
-  const selectUser = (userId: PresetUserId) => {
-    currentUserId.value = userId
-    if (userId === 'system') {
-      notes.value = pd.systemUserNotes
-    } else {
-      notes.value = []
+  const notes = computed(() =>
+    currentUserId.value === 'system' ? pd.systemUserNotes : guestUserNotes.value
+  )
+
+  const currentNote = computed(() => {
+    const noteId = currentNoteId.value
+    if (noteId) {
+      return notes.value.find(itemBy({ noteId })) ?? { noteId, speeches: [] }
+    }
+    return undefined
+  })
+
+  const actions = {
+    selectUser(userId: PresetUserId) {
+      currentUserId.value = userId
+      currentNoteId.value = undefined
+    },
+    selectNote(noteId: string) {
+      currentNoteId.value = noteId
+    },
+    createNewNote() {
+      currentNoteId.value = generateIdTimeSequential()
     }
   }
 
@@ -25,6 +42,6 @@ export const useAppStore = defineStore('appStore', () => {
     currentUser,
     notes,
     currentNote,
-    selectUser
+    ...actions
   }
 })

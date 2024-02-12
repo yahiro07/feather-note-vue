@@ -4,10 +4,13 @@ defineProps<{ iconSpec: string; headerText: string }>()
 </script>
 
 <template>
-  <h2 class="fc-panel-header">
-    <Icon :icon="iconSpec" class="icon" />
-    <span>{{ headerText }}</span>
-  </h2>
+  <div class="fc-panel-header">
+    <h2>
+      <Icon :icon="iconSpec" class="icon" />
+      <span>{{ headerText }}</span>
+    </h2>
+    <slot name="ui-right-part" />
+  </div>
 </template>
 
 <style scoped lang="scss">
@@ -15,11 +18,17 @@ defineProps<{ iconSpec: string; headerText: string }>()
   display: flex;
   align-items: center;
   color: var(--cl-panel-header);
-  font-weight: var(--weight-bold);
-  font-size: 1.6rem;
-  > .icon {
-    font-size: 1.4em;
-    margin-top: 2px;
+
+  > h2 {
+    display: flex;
+    align-items: center;
+    font-weight: var(--weight-bold);
+    font-size: 1.5rem;
+    > .icon {
+      font-size: 1.4em;
+      margin-top: 2px;
+    }
+    margin-right: auto;
   }
 }
 </style>

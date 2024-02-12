@@ -12,6 +12,7 @@ const store = useAppStore()
       :key="note.noteId"
       :note="note"
       :user="store.currentUser"
+      @click="store.selectNote(note.noteId)"
     />
   </div>
 </template>
