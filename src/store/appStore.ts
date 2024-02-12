@@ -1,4 +1,5 @@
-import { presetData, type Note, type PresetUserId } from '@/common/applicationData'
+import { presetData } from '@/common/presetData'
+import { type Note, type PresetUserId } from '@/common/types'
 import { itemBy } from '@/utils/generalUtils'
 import { generateIdTimeSequential } from '@/utils/idGenerator'
 import { defineStore } from 'pinia'

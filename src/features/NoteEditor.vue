@@ -3,7 +3,7 @@ import SpeechCard from '@/components/organisms/SpeechCard.vue'
 import SpeechEditForm from '@/components/organisms/SpeechEditForm.vue'
 import { generateIdTimeSequential } from '@/utils/idGenerator'
 
-import type { Note } from '@/common/applicationData'
+import type { Note } from '@/common/types'
 import { useAppStore } from '@/store/appStore'
 import { computed } from 'vue'
 

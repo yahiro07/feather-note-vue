@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Speech, UserInfo } from '@/common/applicationData'
+import type { Speech, UserInfo } from '@/common/types'
 import SpeechUserInfoPart from '@/components/molecules/SpeechUserInfoPart.vue'
 defineProps<{ speech: Speech; user: UserInfo }>()
 </script>

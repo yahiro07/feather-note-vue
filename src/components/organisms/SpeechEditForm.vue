@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { type UserInfo } from '@/common/applicationData'
 import { textCaps } from '@/common/constants'
+import { type UserInfo } from '@/common/types'
 import ButtonPrimary from '@/components/atoms/ButtonPrimary.vue'
 import SpeechUserInfoPart from '@/components/molecules/SpeechUserInfoPart.vue'
 import { checkStringLength } from '@/utils/textHelper'
