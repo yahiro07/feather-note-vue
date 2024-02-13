@@ -30,7 +30,6 @@ export const usePersistStore = defineStore('persistStore', () => {
       mergeDefaults: (storageValue, defaults) => {
         const merged = { ...defaults, ...storageValue }
         migratePersistData(merged)
-        console.log({ storageValue, defaults, merged })
         return merged
       }
     }
