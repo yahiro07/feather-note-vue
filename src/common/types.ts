@@ -16,6 +16,7 @@ export type Note = {
   noteId: string
   user: UserInfo
   speeches: Speech[]
+  createAt: number
 }
 
 export type UserOptions = {

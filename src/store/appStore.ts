@@ -26,7 +26,7 @@ export const useAppStore = defineStore('appStore', () => {
     if (noteId) {
       return (
         allNotes.value.find(itemBy({ noteId })) ??
-        ({ noteId, speeches: [], user: userInfo } as Note)
+        ({ noteId, speeches: [], user: userInfo, createAt: Date.now() } as Note)
       )
     }
     return undefined
