@@ -5,9 +5,24 @@ import NoteEditor from '@/components/templates/NoteEditor.vue'
 import NoteTimeline from '@/components/templates/NoteTimeline.vue'
 import { useAppStore } from '@/store/appStore'
 import { useSettingsStore } from '@/store/settingsStore'
+import { nextTick, ref } from 'vue'
 
 const store = useAppStore()
-const settingsStore = useSettingsStore()
+const { userOptions } = useSettingsStore()
+
+const refRightColumn = ref<HTMLDivElement | null>()
+
+function createSpeech(contentText: string) {
+  store.createSpeech(contentText)
+  nextTick(() => {
+    const el = refRightColumn.value!
+    if (userOptions.reverseThreadFlow) {
+      el.scrollTop = 0
+    } else {
+      el.scrollTop = el.scrollHeight
+    }
+  })
+}
 </script>
 
 <template>
@@ -20,13 +35,13 @@ const settingsStore = useSettingsStore()
       </PanelHeader>
       <NoteTimeline />
     </div>
-    <div class="column">
+    <div class="column" ref="refRightColumn">
       <PanelHeader icon-spec="ph:chat-text" header-text="ノート詳細" />
       <NoteEditor
         :note="store.currentNote"
-        :is-reverse-flow="settingsStore.userOptions.reverseThreadFlow"
+        :is-reverse-flow="userOptions.reverseThreadFlow"
         v-if="store.currentNote"
-        @create-speech="store.createSpeech"
+        @create-speech="createSpeech"
       />
     </div>
   </main>
