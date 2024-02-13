@@ -1,4 +1,4 @@
 export const appConfig = {
   siteTitle: 'FeatherNote',
-  versionCode: '240213'
+  versionCode: '240214a'
 }

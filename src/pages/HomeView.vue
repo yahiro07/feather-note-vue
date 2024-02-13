@@ -5,9 +5,22 @@ import NoteEditor from '@/components/templates/NoteEditor.vue'
 import NoteTimeline from '@/components/templates/NoteTimeline.vue'
 import { useAppStore } from '@/store/appStore'
 import { useSettingsStore } from '@/store/settingsStore'
+import { nextTick, ref, watch } from 'vue'
 
 const store = useAppStore()
-const settingsStore = useSettingsStore()
+const { userOptions } = useSettingsStore()
+
+const refRightColumn = ref<HTMLDivElement | null>()
+
+function scrollThreadToLatest() {
+  nextTick(() => {
+    const el = refRightColumn.value!
+    const newPosition = userOptions.reverseThreadFlow ? 0 : el.scrollHeight
+    el.scrollTop = newPosition
+  })
+}
+
+watch(() => [store.currentNote, store.currentNote?.speeches.length], scrollThreadToLatest)
 </script>
 
 <template>
@@ -18,16 +31,11 @@ const settingsStore = useSettingsStore()
           <ButtonPrimary icon-spec="bxs:edit" text="作成" @click="store.createNote" />
         </template>
       </PanelHeader>
-      <NoteTimeline :notes="store.allNotes" @select-note="store.selectNote" />
+      <NoteTimeline />
     </div>
-    <div class="column">
+    <div class="column" ref="refRightColumn">
       <PanelHeader icon-spec="ph:chat-text" header-text="ノート詳細" />
-      <NoteEditor
-        :note="store.currentNote"
-        :is-reverse-flow="settingsStore.userOptions.reverseThreadFlow"
-        v-if="store.currentNote"
-        @create-speech="store.createSpeech"
-      />
+      <NoteEditor v-if="store.currentNote" />
     </div>
   </main>
 </template>

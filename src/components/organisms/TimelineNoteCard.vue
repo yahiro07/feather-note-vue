@@ -2,11 +2,16 @@
 import type { Note, UserInfo } from '@/common/types'
 import SpeechCountLabel from '@/components/atoms/SpeechCountLabel.vue'
 import SpeechCard from '@/components/organisms/SpeechCard.vue'
-defineProps<{ note: Note; user: UserInfo }>()
+defineProps<{ note: Note; user: UserInfo; selected: boolean }>()
 </script>
 
 <template>
-  <SpeechCard class="fc-timeline-note-card" :speech="note.speeches[0]" :user="user">
+  <SpeechCard
+    class="fc-timeline-note-card"
+    :speech="note.speeches[0]"
+    :user="user"
+    :selected="selected"
+  >
     <template #overlay-content>
       <div class="info-additional">
         <SpeechCountLabel :count="note.speeches.length" />

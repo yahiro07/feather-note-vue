@@ -1,4 +1,4 @@
-import '@/common/globalStyle.scss'
+import '@/assets/global.scss'
 
 import { appConfig } from '@/common/appConfig'
 import { createPinia } from 'pinia'

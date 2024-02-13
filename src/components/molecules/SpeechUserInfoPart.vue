@@ -2,12 +2,12 @@
 import type { UserInfo } from '@/common/types'
 import AvatarIcon from '@/components/atoms/AvatarIcon.vue'
 
-defineProps<{ user: UserInfo }>()
+defineProps<{ user: UserInfo; sizeOverride?: number }>()
 </script>
 
 <template>
   <div class="fc-speech-user-info-part">
-    <AvatarIcon :avatar-url="user.avatarUrl" :size="36" />
+    <AvatarIcon :avatar-url="user.avatarUrl" :size="sizeOverride ?? 36" />
     <span class="user-name">
       {{ user.userName }}
     </span>

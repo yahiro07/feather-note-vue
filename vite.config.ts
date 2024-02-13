@@ -11,6 +11,16 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `
+          @import "@/assets/variable.scss";
+          @import "@/assets/mixin.scss";
+        `
+      }
+    }
+  },
   server: {
     port: 3000
   }

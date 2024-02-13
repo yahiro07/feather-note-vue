@@ -45,7 +45,8 @@ export const useAppStore = defineStore('appStore', () => {
       const firstSpeech = note.speeches.length == 0
       const speech: Speech = {
         speechId: generateIdTimeSequential(),
-        contentText
+        contentText,
+        createAt: Date.now()
       }
       note.speeches.push(speech)
       if (firstSpeech) {
@@ -55,7 +56,7 @@ export const useAppStore = defineStore('appStore', () => {
   }
 
   return {
-    _currentNoteId: currentNoteId,
+    currentNoteId,
     userInfo,
     allNotes,
     currentNote,

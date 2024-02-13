@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import type { Note } from '@/common/types'
 import TimelineNoteCard from '@/components/organisms/TimelineNoteCard.vue'
+import { useAppStore } from '@/store/appStore'
 
-defineProps<{ notes: Note[] }>()
-defineEmits<{ selectNote: [string] }>()
+const store = useAppStore()
 </script>
 
 <template>
   <div class="fc-note-timeline">
     <TimelineNoteCard
-      v-for="note of notes"
+      v-for="note of store.allNotes"
       :key="note.noteId"
       :note="note"
       :user="note.user"
-      @click="$emit('selectNote', note.noteId)"
+      :selected="note.noteId === store.currentNoteId"
+      @click="store.selectNote(note.noteId)"
     />
   </div>
 </template>
