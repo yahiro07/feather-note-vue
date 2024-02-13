@@ -3,6 +3,7 @@ export type PresetUserId = 'system' | 'guest'
 export type Speech = {
   speechId: string
   contentText: string
+  createAt: number
 }
 
 export type UserInfo = {

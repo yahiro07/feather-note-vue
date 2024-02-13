@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { Speech, UserInfo } from '@/common/types'
 import SpeechUserInfoPart from '@/components/molecules/SpeechUserInfoPart.vue'
+import { getElapsedTimeText } from '@/utils/dateTimeHelper'
 defineProps<{ speech: Speech; user: UserInfo }>()
 </script>
 
@@ -8,6 +9,7 @@ defineProps<{ speech: Speech; user: UserInfo }>()
   <div class="fc-speech-card">
     <div class="header-row">
       <SpeechUserInfoPart :user="user" />
+      <span class="time">{{ getElapsedTimeText(speech.createAt) }}</span>
     </div>
     <div class="content-row">
       {{ speech.contentText }}
@@ -27,5 +29,15 @@ defineProps<{ speech: Speech; user: UserInfo }>()
   flex-direction: column;
   gap: 8px;
   position: relative;
+
+  > .header-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    > .time {
+      color: var(--cl-gray-2);
+      font-size: 0.9rem;
+    }
+  }
 }
 </style>
