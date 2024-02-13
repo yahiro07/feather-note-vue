@@ -8,12 +8,12 @@ const settingsStore = useSettingsStore()
 <template>
   <div class="fc-settings-panel">
     <CheckboxLine
-      :checked="settingsStore.showGuidanceNotes"
+      :checked="settingsStore.userOptions.showGuidanceNotes"
       text="ガイダンスノートを表示"
       @checked="settingsStore.setShowGuidanceNotes"
     />
     <CheckboxLine
-      :checked="settingsStore.reverseThreadFlow"
+      :checked="settingsStore.userOptions.reverseThreadFlow"
       text="スクロール方向を反転"
       @checked="settingsStore.setReverseThreadFlow"
     />

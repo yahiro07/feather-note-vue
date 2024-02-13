@@ -24,7 +24,7 @@ const settingsStore = useSettingsStore()
       <PanelHeader icon-spec="ph:chat-text" header-text="ノート詳細" />
       <NoteEditor
         :note="store.currentNote"
-        :is-reverse-flow="settingsStore.reverseThreadFlow"
+        :is-reverse-flow="settingsStore.userOptions.reverseThreadFlow"
         v-if="store.currentNote"
         @create-speech="store.createSpeech"
       />

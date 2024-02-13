@@ -5,7 +5,7 @@ export const useSettingsStore = defineStore('settingsStore', () => {
   const persistStore = usePersistStore()
   const { userOptions } = persistStore.persistData
   return {
-    ...userOptions,
+    userOptions,
     setShowGuidanceNotes(value: boolean) {
       userOptions.showGuidanceNotes = value
     },
