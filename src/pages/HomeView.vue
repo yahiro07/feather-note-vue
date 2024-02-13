@@ -5,24 +5,22 @@ import NoteEditor from '@/components/templates/NoteEditor.vue'
 import NoteTimeline from '@/components/templates/NoteTimeline.vue'
 import { useAppStore } from '@/store/appStore'
 import { useSettingsStore } from '@/store/settingsStore'
-import { nextTick, ref } from 'vue'
+import { nextTick, ref, watch } from 'vue'
 
 const store = useAppStore()
 const { userOptions } = useSettingsStore()
 
 const refRightColumn = ref<HTMLDivElement | null>()
 
-function createSpeech(contentText: string) {
-  store.createSpeech(contentText)
+function scrollThreadToLatest() {
   nextTick(() => {
     const el = refRightColumn.value!
-    if (userOptions.reverseThreadFlow) {
-      el.scrollTop = 0
-    } else {
-      el.scrollTop = el.scrollHeight
-    }
+    const newPosition = userOptions.reverseThreadFlow ? 0 : el.scrollHeight
+    el.scrollTop = newPosition
   })
 }
+
+watch(() => [store.currentNote, store.currentNote?.speeches.length], scrollThreadToLatest)
 </script>
 
 <template>
@@ -41,7 +39,7 @@ function createSpeech(contentText: string) {
         :note="store.currentNote"
         :is-reverse-flow="userOptions.reverseThreadFlow"
         v-if="store.currentNote"
-        @create-speech="createSpeech"
+        @create-speech="store.createSpeech"
       />
     </div>
   </main>
