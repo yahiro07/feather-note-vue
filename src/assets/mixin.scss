@@ -24,8 +24,9 @@
 
 @mixin iconifyIconContent($path, $color, $size) {
   content: '';
-  background-image: url('https://api.iconify.design/#{$path}.svg?color=#{$color}');
-  background-size: cover;
+  background-color: $color;
+  mask-image: url('https://api.iconify.design/#{$path}.svg');
+  mask-size: contain;
   width: $size * 1px;
   height: $size * 1px;
 }

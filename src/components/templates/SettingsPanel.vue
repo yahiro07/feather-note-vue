@@ -33,7 +33,7 @@ const { userOptions } = useSettingsStore()
     > h3 {
       @include flexAligned(2);
       &:before {
-        @include iconifyIconContent(lucide/settings-2, $cl-main-text, 22);
+        @include iconifyIconContent(lucide/settings-2, var(--cl-main-text), 22);
       }
     }
     > .content {
