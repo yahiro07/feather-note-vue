@@ -1,3 +1,7 @@
+export const appConstants = {
+  avatarImageSize: 64
+}
+
 export const textCaps = {
   blockContentText: 200,
   userName: 32

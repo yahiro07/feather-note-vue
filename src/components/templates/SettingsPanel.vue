@@ -32,6 +32,8 @@ const { userOptions } = useSettingsStore()
 
   > .block {
     > h3 {
+      display: flex;
+      align-items: center;
       margin-bottom: 12px;
     }
     > .content {

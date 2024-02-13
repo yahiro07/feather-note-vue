@@ -8,10 +8,10 @@ const { userInfo, editUserName, loadUserAvatarImage } = useSettingsStore()
 
 <template>
   <div class="fc-profile-edit-part">
-    <SpeechUserInfoPart :user="userInfo" />
+    <SpeechUserInfoPart :user="userInfo" :size-override="60" />
     <div class="buttons">
       <ButtonPrimary text="名前を変更" @click="editUserName" />
-      <ButtonPrimary text="画像をロード" @click="loadUserAvatarImage" />
+      <ButtonPrimary text="画像を選択" @click="loadUserAvatarImage" />
     </div>
   </div>
 </template>

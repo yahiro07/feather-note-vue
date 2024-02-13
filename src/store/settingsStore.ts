@@ -1,11 +1,18 @@
-import { textCaps } from '@/common/constants'
+import { appConstants, textCaps } from '@/common/constants'
 import { usePersistStore } from '@/store/persistStore'
+import { loadAvatarImageFromLocalFile } from '@/utils/avatarImageLoader'
 import { defineStore } from 'pinia'
 
 export const useSettingsStore = defineStore('settingsStore', () => {
   const {
-    persistData: { userOptions, userInfo }
+    persistData: { userOptions, userInfo, userNotes }
   } = usePersistStore()
+
+  const internal = {
+    affectUserInfoToNotes() {
+      userNotes.forEach((note) => (note.user = userInfo))
+    }
+  }
 
   const actions = {
     editUserName() {
@@ -17,10 +24,17 @@ export const useSettingsStore = defineStore('settingsStore', () => {
           window.alert(`名前が長すぎます`)
         } else {
           userInfo.userName = newName
+          internal.affectUserInfoToNotes()
         }
       }
     },
-    loadUserAvatarImage() {}
+    async loadUserAvatarImage() {
+      const imageDataUrl = await loadAvatarImageFromLocalFile(appConstants.avatarImageSize)
+      const size = (new TextEncoder().encode(imageDataUrl).byteLength / 1000) >>> 0
+      console.log(`image data size: ${size}kB`)
+      userInfo.avatarUrl = imageDataUrl
+      internal.affectUserInfoToNotes()
+    }
   }
   return { userOptions, userInfo, ...actions }
 })
