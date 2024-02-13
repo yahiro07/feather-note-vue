@@ -2,11 +2,11 @@
 import type { Speech, UserInfo } from '@/common/types'
 import SpeechUserInfoPart from '@/components/molecules/SpeechUserInfoPart.vue'
 import { getElapsedTimeText } from '@/utils/dateTimeHelper'
-defineProps<{ speech: Speech; user: UserInfo }>()
+defineProps<{ speech: Speech; user: UserInfo; selected: boolean }>()
 </script>
 
 <template>
-  <div class="fc-speech-card">
+  <div :class="['fc-speech-card', selected && '--selected']">
     <div class="header-row">
       <SpeechUserInfoPart :user="user" />
       <span class="time">{{ getElapsedTimeText(speech.createAt) }}</span>
@@ -38,6 +38,11 @@ defineProps<{ speech: Speech; user: UserInfo }>()
       color: var(--cl-gray-2);
       font-size: 0.9rem;
     }
+  }
+  border: solid 1px transparent;
+
+  &.--selected {
+    border: solid 1px var(--cl-card-selected);
   }
 }
 </style>

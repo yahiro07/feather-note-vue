@@ -18,7 +18,7 @@ const settingsStore = useSettingsStore()
           <ButtonPrimary icon-spec="bxs:edit" text="作成" @click="store.createNote" />
         </template>
       </PanelHeader>
-      <NoteTimeline :notes="store.allNotes" @select-note="store.selectNote" />
+      <NoteTimeline />
     </div>
     <div class="column">
       <PanelHeader icon-spec="ph:chat-text" header-text="ノート詳細" />

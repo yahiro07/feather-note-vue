@@ -56,7 +56,7 @@ export const useAppStore = defineStore('appStore', () => {
   }
 
   return {
-    _currentNoteId: currentNoteId,
+    currentNoteId,
     userInfo,
     allNotes,
     currentNote,

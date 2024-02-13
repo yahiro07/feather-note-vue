@@ -25,6 +25,7 @@ function addComment(contentText: string) {
         :key="speech.speechId"
         :speech="speech"
         :user="note.user"
+        :selected="false"
       />
     </div>
     <SpeechEditForm :user="note.user" @submit="addComment" v-if="canComment" />
