@@ -15,13 +15,11 @@ defineProps<{ iconSpec: string; headerText: string }>()
 
 <style scoped lang="scss">
 .fc-panel-header {
-  display: flex;
-  align-items: center;
+  @include flexAligned();
   color: var(--cl-panel-header);
 
   > h2 {
-    display: flex;
-    align-items: center;
+    @include flexAligned();
     font-weight: var(--weight-bold);
     font-size: 1.5rem;
     > .icon {

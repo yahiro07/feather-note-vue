@@ -24,16 +24,11 @@ defineProps<{ speech: Speech; user: UserInfo; selected: boolean }>()
   background: var(--cl-white);
   box-shadow: var(--spec-shadow-light);
   padding: 16px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  @include flexVertical(8);
   position: relative;
 
   > .header-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+    @include flexAligned(12);
     > .time {
       color: var(--cl-gray-2);
       font-size: 0.9rem;

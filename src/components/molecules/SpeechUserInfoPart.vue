@@ -16,10 +16,7 @@ defineProps<{ user: UserInfo; sizeOverride?: number }>()
 
 <style scoped lang="scss">
 .fc-speech-user-info-part {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-
+  @include flexAligned(8);
   > .user-name {
     font-weight: var(--weight-bold);
   }

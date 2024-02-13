@@ -47,9 +47,7 @@ watch(() => [store.currentNote, store.currentNote?.speeches.length], scrollThrea
   > .column {
     width: 50%;
     padding: 12px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+    @include flexVertical(8);
     overflow-y: scroll;
   }
   > .left-column {

@@ -22,9 +22,7 @@ import SettingsPanel from '@/components/templates/SettingsPanel.vue'
   > .narrower {
     flex-grow: 1;
     max-width: 600px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    @include flexVertical(16);
 
     > .settings-panel {
       padding-left: 4px;

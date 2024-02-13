@@ -4,18 +4,14 @@ const model = defineModel()
 </script>
 
 <template>
-  <div class="fc-checkbox-line">
-    <label>
-      <input type="checkbox" v-bind="$attrs" v-model="model" />
-      <span>{{ text }}</span>
-    </label>
-  </div>
+  <label class="fc-checkbox-line">
+    <input type="checkbox" v-bind="$attrs" v-model="model" />
+    <span>{{ text }}</span>
+  </label>
 </template>
 
 <style scoped lang="scss">
 .fc-checkbox-line {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  @include flexAligned(2);
 }
 </style>

@@ -20,8 +20,6 @@ const store = useAppStore()
 
 <style scoped lang="scss">
 .fc-note-timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  @include flexVertical(16);
 }
 </style>
