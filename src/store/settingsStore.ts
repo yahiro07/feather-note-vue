@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 
 export const useSettingsStore = defineStore('settingsStore', () => {
   const {
-    persistData: { userOptions }
+    persistData: { userOptions, userInfo }
   } = usePersistStore()
-  return { userOptions }
+  return { userOptions, userInfo }
 })
