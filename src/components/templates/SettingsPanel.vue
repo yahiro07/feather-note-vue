@@ -2,21 +2,13 @@
 import CheckboxLine from '@/components/atoms/CheckboxLine.vue'
 import { useSettingsStore } from '@/store/settingsStore'
 
-const settingsStore = useSettingsStore()
+const { userOptions } = useSettingsStore()
 </script>
 
 <template>
   <div class="fc-settings-panel">
-    <CheckboxLine
-      :checked="settingsStore.userOptions.showGuidanceNotes"
-      text="ガイダンスノートを表示"
-      @checked="settingsStore.setShowGuidanceNotes"
-    />
-    <CheckboxLine
-      :checked="settingsStore.userOptions.reverseThreadFlow"
-      text="スクロール方向を反転"
-      @checked="settingsStore.setReverseThreadFlow"
-    />
+    <CheckboxLine v-model="userOptions.reverseThreadFlow" text="スクロール方向を反転" />
+    <CheckboxLine v-model="userOptions.showGuidanceNotes" text="ガイダンスノートを表示" />
   </div>
 </template>
 

@@ -9,7 +9,6 @@ const props = defineProps<{ note: Note; isReverseFlow: boolean }>()
 const emit = defineEmits<{ createSpeech: [string] }>()
 
 const isUserNote = computed(() => props.note.user.userId === 'guest')
-
 const canComment = isUserNote
 
 function addComment(contentText: string) {
