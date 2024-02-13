@@ -35,12 +35,7 @@ watch(() => [store.currentNote, store.currentNote?.speeches.length], scrollThrea
     </div>
     <div class="column" ref="refRightColumn">
       <PanelHeader icon-spec="ph:chat-text" header-text="ノート詳細" />
-      <NoteEditor
-        :note="store.currentNote"
-        :is-reverse-flow="userOptions.reverseThreadFlow"
-        v-if="store.currentNote"
-        @create-speech="store.createSpeech"
-      />
+      <NoteEditor v-if="store.currentNote" />
     </div>
   </main>
 </template>

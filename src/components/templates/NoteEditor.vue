@@ -1,23 +1,21 @@
 <script setup lang="ts">
 import SpeechCard from '@/components/organisms/SpeechCard.vue'
 import SpeechEditForm from '@/components/organisms/SpeechEditForm.vue'
+import { computed, toRef, type Ref } from 'vue'
 
 import type { Note } from '@/common/types'
-import { computed } from 'vue'
+import { useAppStore } from '@/store/appStore'
+import { useSettingsStore } from '@/store/settingsStore'
 
-const props = defineProps<{ note: Note; isReverseFlow: boolean }>()
-const emit = defineEmits<{ createSpeech: [string] }>()
-
-const isUserNote = computed(() => props.note.user.userId === 'guest')
+const store = useAppStore()
+const { userOptions } = useSettingsStore()
+const note = toRef(store, 'currentNote') as Ref<Note>
+const isUserNote = computed(() => note.value.user.userId === 'guest')
 const canComment = isUserNote
-
-function addComment(contentText: string) {
-  emit('createSpeech', contentText)
-}
 </script>
 
 <template>
-  <div :class="['fc-note-editor', isReverseFlow && '--flow-reverse']">
+  <div :class="['fc-note-editor', userOptions.reverseThreadFlow && '--flow-reverse']">
     <div class="speeches" v-if="note.speeches.length > 0">
       <SpeechCard
         v-for="speech of note.speeches"
@@ -27,7 +25,7 @@ function addComment(contentText: string) {
         :selected="false"
       />
     </div>
-    <SpeechEditForm :user="note.user" @submit="addComment" v-if="canComment" />
+    <SpeechEditForm :user="note.user" @submit="store.createSpeech" v-if="canComment" />
   </div>
 </template>
 
