@@ -19,4 +19,5 @@ export type Note = {
 
 export type UserOptions = {
   reverseThreadFlow: boolean
+  showGuidanceNotes: boolean
 }

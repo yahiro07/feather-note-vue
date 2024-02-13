@@ -13,15 +13,27 @@ const defaultPersistData: PersistData = {
   userNotes: [],
   userInfo: presetData.presetUsers['guest'],
   userOptions: {
-    reverseThreadFlow: false
+    reverseThreadFlow: false,
+    showGuidanceNotes: true
   }
 }
 
 export const usePersistStore = defineStore('persistStore', () => {
+  function migratePersistData(persistData: PersistData) {
+    persistData.userOptions = { ...defaultPersistData.userOptions, ...persistData.userOptions }
+  }
+
   const persistData = useLocalStorage<PersistData>(
     'feather_note_persist_data',
     defaultPersistData,
-    { mergeDefaults: true }
+    {
+      mergeDefaults: (storageValue, defaults) => {
+        const merged = { ...defaults, ...storageValue }
+        migratePersistData(merged)
+        console.log({ storageValue, defaults, merged })
+        return merged
+      }
+    }
   )
   return { persistData }
 })

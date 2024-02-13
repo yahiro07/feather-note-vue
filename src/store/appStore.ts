@@ -7,9 +7,9 @@ import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 
 export const useAppStore = defineStore('appStore', () => {
-  const persistStore = usePersistStore()
-  const userInfo = persistStore.persistData.userInfo
-  const userNotes = persistStore.persistData.userNotes
+  const {
+    persistData: { userInfo, userNotes }
+  } = usePersistStore()
 
   const currentNoteId = ref<string | undefined>(userNotes[0]?.noteId)
 
