@@ -30,10 +30,7 @@ defineProps<{ iconSpec?: string; text?: string }>()
     margin-top: 3px;
   }
 
-  transition: var(--transition-common);
-  &:hover {
-    opacity: var(--hover-opacity-common);
-  }
+  @include styleClickable;
 
   &:disabled {
     opacity: var(--spec-opacity-control-disabled);

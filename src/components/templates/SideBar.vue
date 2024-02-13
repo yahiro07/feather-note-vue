@@ -45,10 +45,7 @@ const store = useAppStore()
     > a {
       font-size: 32px;
       color: var(--cl-white);
-      transition: var(--transition-common);
-      &:hover {
-        opacity: var(--hover-opacity-common);
-      }
+      @include styleClickable;
     }
   }
   > .users {

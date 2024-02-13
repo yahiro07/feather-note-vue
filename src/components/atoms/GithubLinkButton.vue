@@ -23,6 +23,8 @@ import { Icon } from '@iconify/vue'
     > .icon {
       font-size: 1.5em;
     }
+
+    @include styleClickable;
   }
 }
 </style>
