@@ -5,13 +5,12 @@ import SpeechEditForm from '@/components/organisms/SpeechEditForm.vue'
 import type { Note } from '@/common/types'
 import { computed } from 'vue'
 
-const props = defineProps<{ note: Note }>()
+const props = defineProps<{ note: Note; isReverseFlow: boolean }>()
 const emit = defineEmits<{ createSpeech: [string] }>()
 
 const isUserNote = computed(() => props.note.user.userId === 'guest')
 
 const canComment = isUserNote
-const isReverseFlow = false
 
 function addComment(contentText: string) {
   emit('createSpeech', contentText)

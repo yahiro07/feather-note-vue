@@ -8,12 +8,18 @@ import { computed, ref } from 'vue'
 
 export const useAppStore = defineStore('appStore', () => {
   const {
-    persistData: { userInfo, userNotes }
+    persistData: { userInfo, userNotes, userOptions }
   } = usePersistStore()
 
   const currentNoteId = ref<string | undefined>(userNotes[0]?.noteId)
 
-  const allNotes = computed(() => [...userNotes, ...presetData.systemNotes])
+  const allNotes = computed(() => {
+    if (userOptions.showGuidanceNotes) {
+      return [...userNotes, ...presetData.systemNotes]
+    } else {
+      return userNotes
+    }
+  })
 
   const currentNote = computed(() => {
     const noteId = currentNoteId.value

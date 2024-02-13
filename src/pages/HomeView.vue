@@ -4,8 +4,10 @@ import PanelHeader from '@/components/atoms/PanelHeader.vue'
 import NoteEditor from '@/components/templates/NoteEditor.vue'
 import NoteTimeline from '@/components/templates/NoteTimeline.vue'
 import { useAppStore } from '@/store/appStore'
+import { useSettingsStore } from '@/store/settingsStore'
 
 const store = useAppStore()
+const settingsStore = useSettingsStore()
 </script>
 
 <template>
@@ -22,6 +24,7 @@ const store = useAppStore()
       <PanelHeader icon-spec="ph:chat-text" header-text="ノート詳細" />
       <NoteEditor
         :note="store.currentNote"
+        :is-reverse-flow="settingsStore.reverseThreadFlow"
         v-if="store.currentNote"
         @create-speech="store.createSpeech"
       />
