@@ -1,6 +1,6 @@
 <template>
   <div class="fc-about-view">
-    <h1>StepNote vue</h1>
+    <h1>FeatherNote vue</h1>
   </div>
 </template>
 

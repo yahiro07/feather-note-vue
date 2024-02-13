@@ -1,14 +1,16 @@
 <script setup lang="ts">
+import GithubLinkButton from '@/components/atoms/GithubLinkButton.vue'
+import SideBar from '@/components/templates/SideBar.vue'
 import { RouterView } from 'vue-router'
-import SideBarVue from './views/SideBar.vue'
 </script>
 
 <template>
   <div class="fc-app">
-    <SideBarVue />
+    <SideBar />
     <div class="main-column">
       <RouterView />
     </div>
+    <GithubLinkButton class="github-link-button" />
   </div>
 </template>
 
@@ -19,7 +21,6 @@ import SideBarVue from './views/SideBar.vue'
   overflow: hidden;
   display: flex;
   background: var(--cl-site-background);
-  color: var(--cl-main-text);
 
   > .fc-side-bar {
     flex-shrink: 0;
@@ -27,6 +28,12 @@ import SideBarVue from './views/SideBar.vue'
 
   > .main-column {
     flex-grow: 1;
+  }
+
+  > .github-link-button {
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 }
 </style>

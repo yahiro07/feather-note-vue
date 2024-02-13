@@ -1,0 +1,51 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --cl-site-background: #f0f0f0;
+  --cl-white: #fff;
+  --cl-side-bar: rgb(63, 188, 216);
+  --cl-main-text: #444;
+  --cl-light-gray-1: #eee;
+  --cl-light-gray-2: #ddd;
+  --cl-light-gray-3: #ccc;
+  --cl-gray-1: #aaa;
+  --cl-gray-2: #888;
+  --cl-gray-3: #666;
+  --cl-button-primary: #4bd;
+  --cl-panel-header: #27a;
+  --cl-input-focus: #acf;
+
+  --transition-common: all 0.5s;
+  --hover-opacity-common: 0.7;
+  --spec-shadow-light: 0 0 4px #0004;
+  --weight-bold: 500;
+  --spec-opacity-control-disabled: 0.3;
+}
+
+h1,
+h2,
+h3,
+h3,
+h5,
+h6 {
+  font-weight: 500;
+}
+
+body,
+button,
+input,
+textarea {
+  font-family: 'Noto Sans JP', sans-serif;
+  color: var(--cl-main-text);
+}
+
+input,
+textarea {
+  font-size: 1rem;
+}
