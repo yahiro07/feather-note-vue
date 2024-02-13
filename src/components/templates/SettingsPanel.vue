@@ -26,20 +26,18 @@ const { userOptions } = useSettingsStore()
 
 <style scoped lang="scss">
 .fc-settings-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  @include flexVertical(20);
 
   > .block {
+    @include flexVertical(12);
     > h3 {
-      display: flex;
-      align-items: center;
-      margin-bottom: 12px;
+      @include flexAligned(2);
+      &:before {
+        @include iconifyIconContent(lucide/settings-2, $cl-main-text, 22);
+      }
     }
     > .content {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
+      @include flexVertical(8);
     }
   }
 }

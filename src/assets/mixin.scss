@@ -1,0 +1,31 @@
+@mixin flexVertical($gap: 0) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap * 1px;
+}
+
+@mixin flexHorizontal($gap: 0) {
+  display: flex;
+  gap: $gap * 1px;
+}
+
+@mixin flexAligned($gap: 0) {
+  display: flex;
+  align-items: center;
+  gap: $gap * 1px;
+}
+
+@mixin flexCentered($gap: 0) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $gap * 1px;
+}
+
+@mixin iconifyIconContent($path, $color, $size) {
+  content: '';
+  background-image: url('https://api.iconify.design/#{$path}.svg?color=#{$color}');
+  background-size: cover;
+  width: $size * 1px;
+  height: $size * 1px;
+}

@@ -27,7 +27,7 @@ import SettingsPanel from '@/components/templates/SettingsPanel.vue'
     gap: 16px;
 
     > .settings-panel {
-      padding-left: 8px;
+      padding-left: 4px;
     }
   }
 }

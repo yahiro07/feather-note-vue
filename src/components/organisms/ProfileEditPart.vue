@@ -18,14 +18,10 @@ const { userInfo, editUserName, loadUserAvatarImage } = useSettingsStore()
 
 <style scoped lang="scss">
 .fc-profile-edit-part {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  @include flexAligned(12);
 
   > .buttons {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    @include flexAligned(8);
   }
 }
 </style>
