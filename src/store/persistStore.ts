@@ -19,8 +19,8 @@ const defaultPersistData: PersistData = {
 }
 
 export const usePersistStore = defineStore('persistStore', () => {
-  function migratePersistData(persistData: PersistData) {
-    persistData.userOptions = { ...defaultPersistData.userOptions, ...persistData.userOptions }
+  function migratePersistData(data: PersistData) {
+    data.userOptions = { ...defaultPersistData.userOptions, ...data.userOptions }
   }
 
   const persistData = useLocalStorage<PersistData>(
@@ -34,5 +34,11 @@ export const usePersistStore = defineStore('persistStore', () => {
       }
     }
   )
-  return { persistData }
+
+  function resetPersistData() {
+    persistData.value = defaultPersistData
+    location.reload()
+  }
+
+  return { persistData, resetPersistData }
 })

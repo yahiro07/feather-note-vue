@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import CheckboxLine from '@/components/atoms/CheckboxLine.vue'
+import ButtonPrimary from '@/components/atoms/ButtonPrimary.vue'
+import CheckboxLine from '@/components/molecules/CheckboxLine.vue'
 import ProfileEditPart from '@/components/organisms/ProfileEditPart.vue'
 import { useSettingsStore } from '@/store/settingsStore'
 
-const { userOptions } = useSettingsStore()
+const { userOptions, resetUserData } = useSettingsStore()
 </script>
 
 <template>
@@ -19,6 +20,12 @@ const { userOptions } = useSettingsStore()
       <div class="content">
         <CheckboxLine v-model="userOptions.reverseThreadFlow" text="スクロール方向を反転" />
         <CheckboxLine v-model="userOptions.showGuidanceNotes" text="ガイダンスノートを表示" />
+      </div>
+    </div>
+    <div class="block">
+      <h3>保存データ管理</h3>
+      <div class="content">
+        <ButtonPrimary text="データリセット" @click="resetUserData" />
       </div>
     </div>
   </div>
@@ -38,6 +45,7 @@ const { userOptions } = useSettingsStore()
     }
     > .content {
       @include flexVertical(8);
+      align-items: flex-start;
     }
   }
 }

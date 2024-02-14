@@ -3,7 +3,7 @@ export const appConstants = {
 }
 
 export const textCaps = {
-  blockContentText: 200,
+  speechContentText: 200,
   userName: 32
 }
 

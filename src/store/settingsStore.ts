@@ -1,11 +1,13 @@
 import { appConstants, textCaps } from '@/common/constants'
+import { openConfirmDialog, openTextInputDialog } from '@/components/modals'
 import { usePersistStore } from '@/store/persistStore'
 import { loadAvatarImageFromLocalFile } from '@/utils/avatarImageLoader'
 import { defineStore } from 'pinia'
 
 export const useSettingsStore = defineStore('settingsStore', () => {
   const {
-    persistData: { userOptions, userInfo, userNotes }
+    persistData: { userOptions, userInfo, userNotes },
+    resetPersistData
   } = usePersistStore()
 
   const internal = {
@@ -15,13 +17,16 @@ export const useSettingsStore = defineStore('settingsStore', () => {
   }
 
   const actions = {
-    editUserName() {
-      const newName = window.prompt('ユーザー名', userInfo.userName)
+    async editUserName() {
+      const newName = await openTextInputDialog({
+        message: 'ユーザー名',
+        default: userInfo.userName
+      })
       if (newName !== null && newName !== userInfo.userName) {
         if (newName === '') {
-          window.alert(`名前を入力してください`)
+          await openConfirmDialog({ title: 'エラー', message: `名前を入力してください` })
         } else if (newName.length > textCaps.userName) {
-          window.alert(`名前が長すぎます`)
+          await openConfirmDialog({ title: 'エラー', message: `名前が長すぎます` })
         } else {
           userInfo.userName = newName
           internal.affectUserInfoToNotes()
@@ -34,6 +39,12 @@ export const useSettingsStore = defineStore('settingsStore', () => {
       console.log(`image data size: ${size}kB`)
       userInfo.avatarUrl = imageDataUrl
       internal.affectUserInfoToNotes()
+    },
+    async resetUserData() {
+      const ok = await openConfirmDialog({ message: '保存データをリセットします。よろしいですか?' })
+      if (ok) {
+        resetPersistData()
+      }
     }
   }
   return { userOptions, userInfo, ...actions }

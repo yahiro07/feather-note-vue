@@ -1,7 +1,9 @@
+import { textCaps } from '@/common/constants'
 import { presetData } from '@/common/presetData'
 import { type Note, type Speech } from '@/common/types'
+import { openConfirmDialog, openTextInputDialog } from '@/components/modals'
 import { usePersistStore } from '@/store/persistStore'
-import { itemBy } from '@/utils/generalUtils'
+import { itemBy, removeArrayItemsMatched } from '@/utils/generalUtils'
 import { generateIdTimeSequential } from '@/utils/idGenerator'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
@@ -51,6 +53,36 @@ export const useAppStore = defineStore('appStore', () => {
       note.speeches.push(speech)
       if (firstSpeech) {
         userNotes.unshift(note)
+      }
+    },
+    async editSpeech(speechId: string) {
+      const note = currentNote.value
+      if (!note) return
+      const speech = note.speeches.find(itemBy({ speechId }))
+      if (!speech) return
+      const text = await openTextInputDialog({
+        message: 'コメント',
+        default: speech.contentText,
+        multiLines: true
+      })
+      if (text && text !== speech.contentText) {
+        if (text.length > textCaps.speechContentText) {
+          await openConfirmDialog({ title: 'エラー', message: `文字数が制限を超えています。` })
+        } else {
+          speech.contentText = text
+        }
+      }
+    },
+    async deleteSpeech(speechId: string) {
+      const note = currentNote.value
+      if (!note) return
+      const ok = await openConfirmDialog({ message: '発言を削除します。よろしいですか?' })
+      if (ok) {
+        removeArrayItemsMatched(note.speeches, itemBy({ speechId }))
+        if (note.speeches.length === 0) {
+          removeArrayItemsMatched(userNotes, itemBy({ noteId: currentNoteId.value }))
+          currentNoteId.value = undefined
+        }
       }
     }
   }
