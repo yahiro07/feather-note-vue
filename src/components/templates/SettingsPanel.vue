@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import ButtonPrimary from '@/components/atoms/ButtonPrimary.vue'
-import CheckboxLine from '@/components/atoms/CheckboxLine.vue'
+import CheckboxLine from '@/components/molecules/CheckboxLine.vue'
 import ProfileEditPart from '@/components/organisms/ProfileEditPart.vue'
 import { useSettingsStore } from '@/store/settingsStore'
 
