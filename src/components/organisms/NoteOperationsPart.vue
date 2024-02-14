@@ -6,7 +6,6 @@ import { useAppStore } from '@/store/appStore'
 import { Icon } from '@iconify/vue'
 
 const store = useAppStore()
-defineProps<{ speechId: string }>()
 </script>
 
 <template>
@@ -16,8 +15,7 @@ defineProps<{ speechId: string }>()
     </template>
     <template v-slot:panel-part>
       <MenuPanel class="panel">
-        <TextWithIcon icon="mdi:edit" text="編集" @click="store.editSpeech(speechId)" />
-        <TextWithIcon icon="mdi:delete" text="削除" @click="store.deleteSpeech(speechId)" />
+        <TextWithIcon icon="mdi:delete" text="削除" @click="store.deleteCurrentNote()" />
       </MenuPanel>
     </template>
   </DropDownFrame>
@@ -32,6 +30,6 @@ defineProps<{ speechId: string }>()
 
 .panel {
   position: absolute;
-  right: 0px;
+  left: 0px;
 }
 </style>

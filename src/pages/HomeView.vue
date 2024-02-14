@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import ButtonPrimary from '@/components/atoms/ButtonPrimary.vue'
 import PanelHeader from '@/components/atoms/PanelHeader.vue'
+import NoteOperationsPart from '@/components/organisms/NoteOperationsPart.vue'
 import NoteEditor from '@/components/templates/NoteEditor.vue'
 import NoteTimeline from '@/components/templates/NoteTimeline.vue'
 import { useAppStore } from '@/store/appStore'
@@ -34,7 +35,11 @@ watch(() => [store.currentNote, store.currentNote?.speeches.length], scrollThrea
       <NoteTimeline />
     </div>
     <div class="column" ref="refRightColumn">
-      <PanelHeader icon-spec="ph:chat-text" header-text="ノート詳細" />
+      <PanelHeader icon-spec="ph:chat-text" header-text="ノート詳細">
+        <template v-slot:ui-left-part>
+          <NoteOperationsPart v-if="store.currentNote && store.currentNote.speeches.length > 0" />
+        </template>
+      </PanelHeader>
       <NoteEditor v-if="store.currentNote" />
     </div>
   </main>
