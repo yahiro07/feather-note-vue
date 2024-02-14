@@ -5,7 +5,8 @@ import { defineStore } from 'pinia'
 
 export const useSettingsStore = defineStore('settingsStore', () => {
   const {
-    persistData: { userOptions, userInfo, userNotes }
+    persistData: { userOptions, userInfo, userNotes },
+    resetPersistData
   } = usePersistStore()
 
   const internal = {
@@ -34,6 +35,12 @@ export const useSettingsStore = defineStore('settingsStore', () => {
       console.log(`image data size: ${size}kB`)
       userInfo.avatarUrl = imageDataUrl
       internal.affectUserInfoToNotes()
+    },
+    resetUserData() {
+      const ok = window.confirm('保存データをリセットします。よろしいですか。')
+      if (ok) {
+        resetPersistData()
+      }
     }
   }
   return { userOptions, userInfo, ...actions }
