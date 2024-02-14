@@ -26,6 +26,11 @@ defineProps<{ speech: Speech; user: UserInfo; selected: boolean }>()
   padding: 16px;
   @include flexVertical(8);
   position: relative;
+  border: solid 1px transparent;
+
+  &.--selected {
+    border: solid 1px var(--cl-card-selected);
+  }
 
   > .header-row {
     @include flexAligned(12);
@@ -34,10 +39,10 @@ defineProps<{ speech: Speech; user: UserInfo; selected: boolean }>()
       font-size: 0.9rem;
     }
   }
-  border: solid 1px transparent;
 
-  &.--selected {
-    border: solid 1px var(--cl-card-selected);
+  > .content-row {
+    white-space: pre-wrap;
+    word-break: break-all;
   }
 }
 </style>
