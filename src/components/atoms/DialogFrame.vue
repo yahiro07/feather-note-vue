@@ -1,11 +1,19 @@
 <script setup lang="ts">
+import { onClickOutside } from '@vueuse/core'
+import { ref } from 'vue'
+
 defineProps<{ title: string }>()
-defineEmits<{ close: [] }>()
+
+const panelRef = ref(null)
+
+const emit = defineEmits<{ close: [] }>()
+
+onClickOutside(panelRef, () => emit('close'))
 </script>
 
 <template>
-  <div class="fc-dialog-frame" @click="$emit('close')">
-    <div class="panel" @click.stop="">
+  <div class="fc-dialog-frame">
+    <div class="panel" ref="panelRef">
       <div class="title-bar">{{ title }}</div>
       <div class="content-part">
         <slot />
