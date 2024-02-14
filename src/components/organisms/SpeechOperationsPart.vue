@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import DropDownFrame from '@/components/atoms/DropDownFrame.vue'
+import MenuPanel from '@/components/atoms/MenuPanel.vue'
+import TextWithIcon from '@/components/atoms/TextWithIcon.vue'
 import { useAppStore } from '@/store/appStore'
 import { Icon } from '@iconify/vue'
 
@@ -7,22 +10,28 @@ defineProps<{ speechId: string }>()
 </script>
 
 <template>
-  <div class="fc-speech-operations-part">
-    <Icon icon="mdi:edit" class="icon" @click="store.editSpeech(speechId)" />
-    <Icon icon="mdi:delete" class="icon" @click="store.deleteSpeech(speechId)" />
-  </div>
+  <DropDownFrame>
+    <template v-slot:button-part>
+      <Icon icon="ci:menu-duo-md" class="menu-button" />
+    </template>
+    <template v-slot:panel-part>
+      <MenuPanel class="panel">
+        <TextWithIcon icon="mdi:edit" text="編集" @click="store.editSpeech(speechId)" />
+        <TextWithIcon icon="mdi:delete" text="削除" @click="store.deleteSpeech(speechId)" />
+      </MenuPanel>
+    </template>
+  </DropDownFrame>
 </template>
 
 <style scoped lang="scss">
-.fc-speech-operations-part {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 8px;
+.menu-button {
   color: var(--cl-gray-1);
-  @include flexAligned(4);
-  > .icon {
-    @include styleClickable;
-  }
+  font-size: 20px;
+  @include styleClickable;
+}
+
+.panel {
+  position: absolute;
+  right: 0px;
 }
 </style>
