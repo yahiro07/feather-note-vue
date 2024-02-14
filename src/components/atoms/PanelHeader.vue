@@ -9,13 +9,15 @@ defineProps<{ iconSpec: string; headerText: string }>()
       <Icon :icon="iconSpec" class="icon" />
       <span>{{ headerText }}</span>
     </h2>
+    <slot name="ui-left-part" />
+    <div class="spacer" />
     <slot name="ui-right-part" />
   </div>
 </template>
 
 <style scoped lang="scss">
 .fc-panel-header {
-  @include flexAligned();
+  @include flexAligned(12);
   color: var(--cl-panel-header);
 
   > h2 {
@@ -26,7 +28,10 @@ defineProps<{ iconSpec: string; headerText: string }>()
       font-size: 1.4em;
       margin-top: 2px;
     }
-    margin-right: auto;
+  }
+
+  > .spacer {
+    margin-left: auto;
   }
 }
 </style>

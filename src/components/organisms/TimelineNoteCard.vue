@@ -22,6 +22,11 @@ defineProps<{ note: Note; user: UserInfo; selected: boolean }>()
 
 <style scoped lang="scss">
 .fc-timeline-note-card {
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    background: var(--cl-card-hover);
+  }
   > .info-additional {
     position: absolute;
     top: 0;

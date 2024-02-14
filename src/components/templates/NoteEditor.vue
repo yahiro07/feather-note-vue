@@ -25,7 +25,11 @@ const canEdit = isUserNote
         :selected="false"
       >
         <template v-slot:overlay-content>
-          <SpeechOperationsPart :speechId="speech.speechId" v-if="canEdit" />
+          <SpeechOperationsPart
+            :speechId="speech.speechId"
+            v-if="canEdit"
+            class="speech-operations-part"
+          />
         </template>
       </SpeechCard>
     </div>
@@ -47,5 +51,12 @@ const canEdit = isUserNote
       flex-direction: column-reverse;
     }
   }
+}
+
+.speech-operations-part {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 8px;
 }
 </style>

@@ -41,6 +41,14 @@ export const useAppStore = defineStore('appStore', () => {
     createNote() {
       currentNoteId.value = generateIdTimeSequential()
     },
+    async deleteCurrentNote() {
+      if (!currentNoteId.value) return
+      const ok = await openConfirmDialog({ message: 'ノートを削除します。よろしいですか?' })
+      if (ok) {
+        removeArrayItemsMatched(userNotes, itemBy({ noteId: currentNoteId.value }))
+        currentNoteId.value = undefined
+      }
+    },
     createSpeech(contentText: string) {
       const note = currentNote.value
       if (!note) return
