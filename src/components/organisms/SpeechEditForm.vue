@@ -49,10 +49,9 @@ function submitComment() {
 
 <style scoped lang="scss">
 .fc-speech-edit-form {
-  background: var(--cl-white);
   padding: 16px;
-  display: flex;
-  flex-direction: column;
+  @include flexVertical();
+  background: var(--cl-white);
   box-shadow: var(--spec-shadow-light);
   > .header-row {
     display: flex;
@@ -70,8 +69,6 @@ function submitComment() {
   > .content-row {
     margin-top: 8px;
     display: flex;
-    align-items: flex-start;
-    gap: 4px;
 
     > textarea {
       flex-grow: 1;

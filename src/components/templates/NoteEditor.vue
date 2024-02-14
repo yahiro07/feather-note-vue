@@ -31,14 +31,10 @@ const canComment = isUserNote
 
 <style scoped lang="scss">
 .fc-note-editor {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  @include flexVertical(16);
 
   > .speeches {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    @include flexVertical(16);
   }
 
   &.--flow-reverse {

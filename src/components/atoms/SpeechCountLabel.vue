@@ -12,10 +12,8 @@ defineProps<{ count: number }>()
 
 <style scoped lang="scss">
 .fc-speech-count-label {
-  display: flex;
-  align-items: center;
+  @include flexAligned(2);
   font-size: 1.5rem;
-  gap: 2px;
   > .icon {
     font-size: 1.1em;
     margin-top: 4px;

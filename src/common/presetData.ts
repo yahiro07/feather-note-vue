@@ -21,13 +21,15 @@ const presetUsers = {
 const systemNotes: Note[] = guidanceNotes.map((note) => ({
   noteId: note.noteId,
   user: systemUser,
-  speeches: note.speeches
+  speeches: note.speeches,
+  createAt: note.createAt
 }))
 
 const fallbackNote: Note = {
   noteId: '',
   user: systemUser,
-  speeches: []
+  speeches: [],
+  createAt: 0
 }
 
 export const presetData = {

@@ -1,15 +1,23 @@
+<script setup lang="ts">
+import AboutContent from '@/components/templates/AboutContent.vue'
+</script>
 <template>
   <div class="fc-about-view">
-    <h1>FeatherNote vue</h1>
+    <div class="narrower">
+      <AboutContent />
+    </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 .fc-about-view {
-  padding: 10px;
-
-  > h1 {
-    font-weight: normal;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  overflow-y: scroll;
+  > .narrower {
+    flex-grow: 1;
+    max-width: 800px;
   }
 }
 </style>

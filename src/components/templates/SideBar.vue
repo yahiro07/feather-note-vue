@@ -17,13 +17,11 @@ const store = useAppStore()
       <RouterLink to="/settings">
         <Icon :icon="iconSpecs.settings" />
       </RouterLink>
-      <RouterLink to="/about" v-if="false">
+      <RouterLink to="/about">
         <Icon :icon="iconSpecs.about" />
       </RouterLink>
     </nav>
-    <div class="users">
-      <AvatarIcon :avatar-url="store.userInfo.avatarUrl" :size="44" />
-    </div>
+    <AvatarIcon :avatar-url="store.userInfo.avatarUrl" :size="44" />
   </div>
 </template>
 
@@ -39,22 +37,13 @@ const store = useAppStore()
   padding: 12px 0 16px;
 
   > nav {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+    @include flexVertical(8);
+
     > a {
       font-size: 32px;
       color: var(--cl-white);
-      transition: var(--transition-common);
-      &:hover {
-        opacity: var(--hover-opacity-common);
-      }
+      @include styleClickable;
     }
-  }
-  > .users {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
   }
 }
 </style>
