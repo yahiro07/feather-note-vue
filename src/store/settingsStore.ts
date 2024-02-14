@@ -1,4 +1,5 @@
 import { appConstants, textCaps } from '@/common/constants'
+import { openConfirmDialog } from '@/components/modals'
 import { usePersistStore } from '@/store/persistStore'
 import { loadAvatarImageFromLocalFile } from '@/utils/avatarImageLoader'
 import { defineStore } from 'pinia'
@@ -36,8 +37,8 @@ export const useSettingsStore = defineStore('settingsStore', () => {
       userInfo.avatarUrl = imageDataUrl
       internal.affectUserInfoToNotes()
     },
-    resetUserData() {
-      const ok = window.confirm('保存データをリセットします。よろしいですか。')
+    async resetUserData() {
+      const ok = await openConfirmDialog({ text: '保存データをリセットします。よろしいですか?' })
       if (ok) {
         resetPersistData()
       }

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import GithubLinkButton from '@/components/atoms/GithubLinkButton.vue'
 import SideBar from '@/components/templates/SideBar.vue'
+import { PromiseDialogsWrapper } from 'vue-promise-dialogs'
 import { RouterView } from 'vue-router'
 </script>
 
@@ -11,6 +12,7 @@ import { RouterView } from 'vue-router'
       <RouterView />
     </div>
     <GithubLinkButton class="github-link-button" />
+    <PromiseDialogsWrapper />
   </div>
 </template>
 

@@ -1,5 +1,4 @@
 import '@/assets/global.scss'
-
 import { appConfig } from '@/common/appConfig'
 import { createPinia } from 'pinia'
 import { createApp } from 'vue'
@@ -11,7 +10,6 @@ const app = createApp(App)
 const pinia = createPinia()
 
 app.use(pinia)
-
 app.use(router)
 
 app.mount('#app')
