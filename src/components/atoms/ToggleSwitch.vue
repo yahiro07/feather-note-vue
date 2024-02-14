@@ -16,6 +16,7 @@ const model = defineModel()
   height: 26px;
   cursor: pointer;
   --transition-spec: 0.2s;
+  @include styleClickable;
 
   > input {
     width: 0;
