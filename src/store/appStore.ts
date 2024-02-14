@@ -74,6 +74,10 @@ export const useAppStore = defineStore('appStore', () => {
       const ok = window.confirm(`発言を削除します。よろしいですか?`)
       if (ok) {
         removeArrayItemsMatched(note.speeches, itemBy({ speechId }))
+        if (note.speeches.length === 0) {
+          removeArrayItemsMatched(userNotes, itemBy({ noteId: currentNoteId.value }))
+          currentNoteId.value = undefined
+        }
       }
     }
   }
