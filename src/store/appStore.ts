@@ -1,3 +1,4 @@
+import { textCaps } from '@/common/constants'
 import { presetData } from '@/common/presetData'
 import { type Note, type Speech } from '@/common/types'
 import { usePersistStore } from '@/store/persistStore'
@@ -51,6 +52,20 @@ export const useAppStore = defineStore('appStore', () => {
       note.speeches.push(speech)
       if (firstSpeech) {
         userNotes.unshift(note)
+      }
+    },
+    editSpeech(speechId: string) {
+      const note = currentNote.value
+      if (!note) return
+      const speech = note.speeches.find(itemBy({ speechId }))
+      if (!speech) return
+      const text = window.prompt('コメント', speech.contentText)
+      if (text && text !== speech.contentText) {
+        if (text.length > textCaps.speechContentText) {
+          window.alert(`文字数が制限を超えています。`)
+        } else {
+          speech.contentText = text
+        }
       }
     },
     deleteSpeech(speechId: string) {

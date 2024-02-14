@@ -14,9 +14,11 @@ const emit = defineEmits<{
 
 const contentText = ref('')
 
-const canSubmit = computed(() => checkStringLength(contentText.value, 1, textCaps.blockContentText))
+const canSubmit = computed(() =>
+  checkStringLength(contentText.value, 1, textCaps.speechContentText)
+)
 
-const lengthsText = computed(() => `${contentText.value.length} / ${textCaps.blockContentText}`)
+const lengthsText = computed(() => `${contentText.value.length} / ${textCaps.speechContentText}`)
 
 function submitComment() {
   if (canSubmit.value) {

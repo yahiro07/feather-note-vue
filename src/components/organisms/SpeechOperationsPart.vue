@@ -8,8 +8,8 @@ defineProps<{ speechId: string }>()
 
 <template>
   <div class="fc-speech-operations-part">
-    <Icon icon="mdi:edit" class="icon" />
-    <Icon icon="mdi:delete" @click="store.deleteSpeech(speechId)" class="icon" />
+    <Icon icon="mdi:edit" class="icon" @click="store.editSpeech(speechId)" />
+    <Icon icon="mdi:delete" class="icon" @click="store.deleteSpeech(speechId)" />
   </div>
 </template>
 
