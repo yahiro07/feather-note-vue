@@ -2,7 +2,7 @@
 import ButtonPrimary from '@/components/atoms/ButtonPrimary.vue'
 import DialogFrame from '@/components/atoms/DialogFrame.vue'
 
-export type ConfirmDialogParams = { title?: string; text: string }
+export type ConfirmDialogParams = { title?: string; message: string }
 
 defineProps<{ params: ConfirmDialogParams }>()
 const emit = defineEmits<{ resolve: [boolean] }>()
@@ -15,7 +15,7 @@ function close(result: boolean) {
 <template>
   <DialogFrame :title="params.title ?? '確認'" @close="close(false)">
     <div class="fc-confirm-dialog-content">
-      <div class="message-row">{{ params.text }}</div>
+      <div class="message-row">{{ params.message }}</div>
       <div class="buttons-row">
         <ButtonPrimary text="OK" @click="close(true)" />
       </div>

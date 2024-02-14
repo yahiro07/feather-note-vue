@@ -1,7 +1,7 @@
 import { textCaps } from '@/common/constants'
 import { presetData } from '@/common/presetData'
 import { type Note, type Speech } from '@/common/types'
-import { openConfirmDialog } from '@/components/modals'
+import { openConfirmDialog, openTextInputDialog } from '@/components/modals'
 import { usePersistStore } from '@/store/persistStore'
 import { itemBy, removeArrayItemsMatched } from '@/utils/generalUtils'
 import { generateIdTimeSequential } from '@/utils/idGenerator'
@@ -55,15 +55,19 @@ export const useAppStore = defineStore('appStore', () => {
         userNotes.unshift(note)
       }
     },
-    editSpeech(speechId: string) {
+    async editSpeech(speechId: string) {
       const note = currentNote.value
       if (!note) return
       const speech = note.speeches.find(itemBy({ speechId }))
       if (!speech) return
-      const text = window.prompt('コメント', speech.contentText)
+      const text = await openTextInputDialog({
+        message: 'コメント',
+        default: speech.contentText,
+        multiLines: true
+      })
       if (text && text !== speech.contentText) {
         if (text.length > textCaps.speechContentText) {
-          window.alert(`文字数が制限を超えています。`)
+          await openConfirmDialog({ title: 'エラー', message: `文字数が制限を超えています。` })
         } else {
           speech.contentText = text
         }
@@ -72,7 +76,7 @@ export const useAppStore = defineStore('appStore', () => {
     async deleteSpeech(speechId: string) {
       const note = currentNote.value
       if (!note) return
-      const ok = await openConfirmDialog({ text: '発言を削除します。よろしいですか?' })
+      const ok = await openConfirmDialog({ message: '発言を削除します。よろしいですか?' })
       if (ok) {
         removeArrayItemsMatched(note.speeches, itemBy({ speechId }))
         if (note.speeches.length === 0) {

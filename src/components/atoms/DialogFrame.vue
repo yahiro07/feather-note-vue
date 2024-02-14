@@ -26,7 +26,7 @@ defineEmits<{ close: [] }>()
 
   > .panel {
     background: var(--cl-white);
-    min-width: 320px;
+    min-width: 360px;
     border: solid 1px var(--cl-primary);
     box-shadow: var(--spec-shadow-light);
 
