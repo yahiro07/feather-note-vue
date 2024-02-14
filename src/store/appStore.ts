@@ -1,7 +1,7 @@
 import { presetData } from '@/common/presetData'
 import { type Note, type Speech } from '@/common/types'
 import { usePersistStore } from '@/store/persistStore'
-import { itemBy } from '@/utils/generalUtils'
+import { itemBy, removeArrayItemsMatched } from '@/utils/generalUtils'
 import { generateIdTimeSequential } from '@/utils/idGenerator'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
@@ -51,6 +51,14 @@ export const useAppStore = defineStore('appStore', () => {
       note.speeches.push(speech)
       if (firstSpeech) {
         userNotes.unshift(note)
+      }
+    },
+    deleteSpeech(speechId: string) {
+      const note = currentNote.value
+      if (!note) return
+      const ok = window.confirm(`発言を削除します。よろしいですか?`)
+      if (ok) {
+        removeArrayItemsMatched(note.speeches, itemBy({ speechId }))
       }
     }
   }

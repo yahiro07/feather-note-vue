@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import SpeechCard from '@/components/organisms/SpeechCard.vue'
 import SpeechEditForm from '@/components/organisms/SpeechEditForm.vue'
+import SpeechOperationsPart from '@/components/organisms/SpeechOperationsPart.vue'
 import { computed, toRef, type Ref } from 'vue'
 
 import type { Note } from '@/common/types'
 import { useAppStore } from '@/store/appStore'
 import { useSettingsStore } from '@/store/settingsStore'
-
 const store = useAppStore()
 const { userOptions } = useSettingsStore()
 const note = toRef(store, 'currentNote') as Ref<Note>
 const isUserNote = computed(() => note.value.user.userId === 'guest')
-const canComment = isUserNote
+const canEdit = isUserNote
 </script>
 
 <template>
@@ -23,9 +23,13 @@ const canComment = isUserNote
         :speech="speech"
         :user="note.user"
         :selected="false"
-      />
+      >
+        <template v-slot:overlay-content>
+          <SpeechOperationsPart :speechId="speech.speechId" v-if="canEdit" />
+        </template>
+      </SpeechCard>
     </div>
-    <SpeechEditForm :user="note.user" @submit="store.createSpeech" v-if="canComment" />
+    <SpeechEditForm :user="note.user" @submit="store.createSpeech" v-if="canEdit" />
   </div>
 </template>
 
