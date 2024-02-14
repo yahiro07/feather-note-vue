@@ -34,11 +34,11 @@
       <li>Pinia</li>
       <li>Sass (SCSS)</li>
     </ul>
-    <h3>構成上工夫した点</h3>
+    <h3>構成上の特徴</h3>
     <ul>
       <li>Composition APIを利用して、状態管理の実装をビューから切り離しています。</li>
       <li>状態管理をストアに寄せて、ビュー側でなるべくロジックを持たないようにしました。</li>
-      <li>Atomic Designを採用して、わかりやすいコンポーネントの階層にしました。</li>
+      <li>Atomic Designを採用して、わかりやすいコンポーネント階層にしました。</li>
     </ul>
   </div>
 </template>
