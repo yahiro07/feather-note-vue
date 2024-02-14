@@ -17,7 +17,7 @@ const store = useAppStore()
       <RouterLink to="/settings">
         <Icon :icon="iconSpecs.settings" />
       </RouterLink>
-      <RouterLink to="/about" v-if="false">
+      <RouterLink to="/about">
         <Icon :icon="iconSpecs.about" />
       </RouterLink>
     </nav>

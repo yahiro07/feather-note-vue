@@ -15,13 +15,13 @@ import SettingsPanel from '@/components/templates/SettingsPanel.vue'
 
 <style scoped lang="scss">
 .fc-settings-view {
-  padding: 10px;
+  padding: 12px;
   display: flex;
   justify-content: center;
 
   > .narrower {
     flex-grow: 1;
-    max-width: 600px;
+    max-width: 800px;
     @include flexVertical(16);
 
     > .settings-panel {
