@@ -32,6 +32,7 @@ defineProps<{ speechId: string }>()
 
 .panel {
   position: absolute;
+  z-index: $z-order-menu;
   right: 0px;
 }
 </style>

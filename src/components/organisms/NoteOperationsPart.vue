@@ -31,5 +31,6 @@ const store = useAppStore()
 .panel {
   position: absolute;
   left: 0px;
+  z-index: $z-order-menu;
 }
 </style>
