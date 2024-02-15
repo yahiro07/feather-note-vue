@@ -7,7 +7,7 @@ defineProps<{ user: UserInfo; sizeOverride?: number }>()
 
 <template>
   <div class="fc-speech-user-info-part">
-    <AvatarIcon :avatar-url="user.avatarUrl" :size="sizeOverride ?? 36" />
+    <AvatarIcon :avatar-url="user.avatarUrl" :size="sizeOverride ?? 36" class="avatar" />
     <span class="user-name">
       {{ user.userName }}
     </span>
@@ -17,6 +17,10 @@ defineProps<{ user: UserInfo; sizeOverride?: number }>()
 <style scoped lang="scss">
 .fc-speech-user-info-part {
   @include flexAligned(8);
+
+  > .avatar {
+    flex-shrink: 0;
+  }
   > .user-name {
     font-weight: var(--weight-bold);
   }

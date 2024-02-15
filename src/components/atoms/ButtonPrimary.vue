@@ -25,6 +25,7 @@ defineProps<{ iconSpec?: string; text?: string }>()
   font-size: 1rem;
   gap: 1px;
   cursor: pointer;
+  white-space: nowrap;
   > .icon {
     font-size: 1.3em;
     margin-top: 3px;

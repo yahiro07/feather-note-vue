@@ -24,6 +24,7 @@ defineProps<{ iconSpec: string; headerText: string }>()
     @include flexAligned();
     font-weight: var(--weight-bold);
     font-size: 1.5rem;
+    white-space: nowrap;
     > .icon {
       font-size: 1.4em;
       margin-top: 2px;
